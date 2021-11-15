@@ -33,7 +33,6 @@
 
 
     <Folder Include="DTO\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
 
