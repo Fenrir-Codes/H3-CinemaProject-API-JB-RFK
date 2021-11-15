@@ -7,7 +7,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
 {
     public class PaymentDetails
     {
-        public int PaymentId { get; set; }
+        public int PaymentDetailsId { get; set; }
         public int TransactionId { get; set; }
         public string PaymentMethod { get; set; }
         public bool Paid { get; set; }
