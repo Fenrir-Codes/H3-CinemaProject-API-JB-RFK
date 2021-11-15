@@ -17,5 +17,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
         public int NumberOfSeats { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime TimeStamp { get; set; }
+
+        /* EF Relations */
+        public ICollection<PaymentDetails> PaymentDetails { get; set; }
+        public ICollection<Hall> Halls { get; set; }
+
     }
 }

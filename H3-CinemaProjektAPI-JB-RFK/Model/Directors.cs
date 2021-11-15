@@ -11,5 +11,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        /* EF Relations */
+        public ICollection<Movie> Movies { get; set; }
+
     }
 }
