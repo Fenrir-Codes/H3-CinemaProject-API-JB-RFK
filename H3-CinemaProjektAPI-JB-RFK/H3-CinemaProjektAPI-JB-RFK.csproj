@@ -11,14 +11,14 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-<<<<<<< Updated upstream
-=======
+
+
     <Folder Include="DataBase\" />
     <Folder Include="DTO\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
->>>>>>> Stashed changes
+
   </ItemGroup>
 
 </Project>
