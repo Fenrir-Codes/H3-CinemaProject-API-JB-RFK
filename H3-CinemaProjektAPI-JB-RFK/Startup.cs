@@ -42,6 +42,13 @@ namespace H3_CinemaProjektAPI_JB_RFK
             });
 
             services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
+            services.AddScoped<IBookingRepositories, BookingRepositories>();
+            services.AddScoped<IDirectorsRepositories, DirectorsRepositories>();
+            services.AddScoped<IHallRepositories, HallRepositories>();
+            services.AddScoped<IMovieRepositories, MovieRepositories>();
+            services.AddScoped<IPaymentDetailsRepositories, PaymentDetailsRepositories>();
+            services.AddScoped<IProfileRepositories, ProfileRepositories>();
+            services.AddScoped<ISeatNumberRepositories, SeatNumberRepositories>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
