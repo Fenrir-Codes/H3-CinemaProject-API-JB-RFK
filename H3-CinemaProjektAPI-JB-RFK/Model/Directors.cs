@@ -7,7 +7,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
 {
     public class Directors
     {
-        public int DirectorId { get; set; }
+        public int DirectorsId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Firstname { get; set; }
