@@ -18,5 +18,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
         public DateTime MovieLength { get; set; }
         public DateTime ReleaseDate { get; set; }
 
+        /* EF Relations */
+        public ICollection<Booking> Bookings { get; set; }
+
     }
 }

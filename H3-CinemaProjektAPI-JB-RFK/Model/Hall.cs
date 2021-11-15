@@ -12,5 +12,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
         public string HallGreat { get; set; }
         public string HallSmall { get; set; }
 
+        /* EF Relations */
+        public ICollection<SeatNumber> SeatNumbers { get; set; }
+
     }
 }
