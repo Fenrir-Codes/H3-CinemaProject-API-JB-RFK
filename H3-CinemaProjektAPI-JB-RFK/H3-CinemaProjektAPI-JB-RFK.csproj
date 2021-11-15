@@ -31,7 +31,6 @@
     <Folder Include="Controllers\" />
 
 
-    <Folder Include="DataBase\" />
     <Folder Include="DTO\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Repositories\" />
