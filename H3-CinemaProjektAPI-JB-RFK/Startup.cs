@@ -1,4 +1,6 @@
 using H3_CinemaProjektAPI_JB_RFK.DataBase;
+using H3_CinemaProjektAPI_JB_RFK.Interfaces;
+using H3_CinemaProjektAPI_JB_RFK.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -40,6 +42,15 @@ namespace H3_CinemaProjektAPI_JB_RFK
             });
 
             services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
+
+            //scopeing
+            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IDirectorsService, DirectorsService>();
+            services.AddScoped<IHallService, HallService>();
+            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IPaymentDetailsService, PaymentDetailsService>();
+            services.AddScoped<IProfileService, ProfileService>();
+            services.AddScoped<ISeatNumberService, SeatNumberService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

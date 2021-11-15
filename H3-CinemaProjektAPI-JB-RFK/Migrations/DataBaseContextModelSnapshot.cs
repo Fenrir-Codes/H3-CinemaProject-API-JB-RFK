@@ -55,6 +55,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
 
                     b.HasKey("BookingId");
 
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("ProfileId");
+
                     b.ToTable("Booking");
                 });
 
@@ -68,13 +72,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Firstname")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Lastname")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DirectorsId");
@@ -89,13 +87,21 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("BookingId")
+                        .HasColumnType("int");
+
                     b.Property<string>("HallGreat")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HallSmall")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SeatNumberId")
+                        .HasColumnType("int");
+
                     b.HasKey("HallId");
+
+                    b.HasIndex("BookingId");
 
                     b.ToTable("Hall");
                 });
@@ -114,6 +120,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DirectorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DirectorsId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Duration")
@@ -136,6 +145,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
 
                     b.HasKey("MovieId");
 
+                    b.HasIndex("DirectorsId");
+
                     b.ToTable("Movie");
                 });
 
@@ -145,6 +156,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("BookingId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CardNumber")
                         .HasColumnType("int");
@@ -159,6 +173,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("PaymentDetailsId");
+
+                    b.HasIndex("BookingId");
 
                     b.ToTable("PaymentDetails");
                 });
@@ -203,6 +219,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("HallId")
+                        .HasColumnType("int");
+
                     b.Property<int>("SeatColumn")
                         .HasColumnType("int");
 
@@ -211,7 +230,79 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
 
                     b.HasKey("SeatNumberId");
 
+                    b.HasIndex("HallId");
+
                     b.ToTable("SeatNumber");
+                });
+
+            modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.Booking", b =>
+                {
+                    b.HasOne("H3_CinemaProjektAPI_JB_RFK.Model.Movie", null)
+                        .WithMany("Bookings")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("H3_CinemaProjektAPI_JB_RFK.Model.Profile", null)
+                        .WithMany("Bookings")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.Hall", b =>
+                {
+                    b.HasOne("H3_CinemaProjektAPI_JB_RFK.Model.Booking", null)
+                        .WithMany("Halls")
+                        .HasForeignKey("BookingId");
+                });
+
+            modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.Movie", b =>
+                {
+                    b.HasOne("H3_CinemaProjektAPI_JB_RFK.Model.Directors", null)
+                        .WithMany("Movies")
+                        .HasForeignKey("DirectorsId");
+                });
+
+            modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.PaymentDetails", b =>
+                {
+                    b.HasOne("H3_CinemaProjektAPI_JB_RFK.Model.Booking", null)
+                        .WithMany("PaymentDetails")
+                        .HasForeignKey("BookingId");
+                });
+
+            modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.SeatNumber", b =>
+                {
+                    b.HasOne("H3_CinemaProjektAPI_JB_RFK.Model.Hall", null)
+                        .WithMany("SeatNumbers")
+                        .HasForeignKey("HallId");
+                });
+
+            modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.Booking", b =>
+                {
+                    b.Navigation("Halls");
+
+                    b.Navigation("PaymentDetails");
+                });
+
+            modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.Directors", b =>
+                {
+                    b.Navigation("Movies");
+                });
+
+            modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.Hall", b =>
+                {
+                    b.Navigation("SeatNumbers");
+                });
+
+            modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.Movie", b =>
+                {
+                    b.Navigation("Bookings");
+                });
+
+            modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.Profile", b =>
+                {
+                    b.Navigation("Bookings");
                 });
 #pragma warning restore 612, 618
         }
