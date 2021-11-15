@@ -51,6 +51,7 @@ namespace H3_CinemaProjektAPI_JB_RFK
             services.AddScoped<IPaymentDetailsService, PaymentDetailsService>();
             services.AddScoped<IProfileService, ProfileService>();
             services.AddScoped<ISeatNumberService, SeatNumberService>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
