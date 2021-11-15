@@ -16,6 +16,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
         public int Phone { get; set; }
         public int Role { get; set; }
 
- 
+
+        public ICollection<Booking> Bookings { get; set; }
     }
 }
