@@ -1,4 +1,6 @@
 using H3_CinemaProjektAPI_JB_RFK.DataBase;
+using H3_CinemaProjektAPI_JB_RFK.Interfaces;
+using H3_CinemaProjektAPI_JB_RFK.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

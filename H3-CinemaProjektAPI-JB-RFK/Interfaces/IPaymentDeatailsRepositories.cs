@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
 {
-    interface IPaymentDeatailsRepositories
+    public interface IPaymentDeatailsRepositories
     {
     }
 }
