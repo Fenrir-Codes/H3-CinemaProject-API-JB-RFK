@@ -26,7 +26,18 @@ namespace H3_CinemaProjektAPI_JB_RFK
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CORS",
+                builder =>
+                {
+                    builder.AllowAnyOrigin() 
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
 
+            //services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -47,6 +58,8 @@ namespace H3_CinemaProjektAPI_JB_RFK
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("CORS");
 
             app.UseAuthorization();
 
