@@ -26,6 +26,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         //Login
         public async Task<List<Profile>> Login(string Email, string password)
         {
+            //var profile = await context.Profile.Where(e => e.Email == Email && e.Password == password).ToListAsync();            
+
             return await context.Profile.Where(e => e.Email == Email && e.Password == password).ToListAsync();
 
         }
