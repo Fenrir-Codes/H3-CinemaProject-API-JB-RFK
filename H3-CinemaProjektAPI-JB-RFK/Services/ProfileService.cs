@@ -1,4 +1,5 @@
-﻿using H3_CinemaProjektAPI_JB_RFK.Interfaces;
+﻿using H3_CinemaProjektAPI_JB_RFK.DTO;
+using H3_CinemaProjektAPI_JB_RFK.Interfaces;
 using H3_CinemaProjektAPI_JB_RFK.Model;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,15 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         }
 
         //Login
-        public async Task<List<Profile>> Login(string Email, string password)
+        public async Task<List<ProfileResponse>> Login(string Email, string password)
         {
             return await _context.Login(Email,password);
         }
 
+        public async Task<List<Profile>> GetProfile(int id)
+        {
+            return await _context.GetProfile(id);
+        }
 
 
 
