@@ -9,11 +9,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 {
     public class SeatNumberRepositories : ISeatNumberRepositories
     {
-        private readonly DataBaseContext _context;
+        private readonly DataBaseContext context;
 
-        public SeatNumberRepositories(DataBaseContext context)
+        public SeatNumberRepositories(DataBaseContext _context)
         {
-            _context = context;
+            context = _context;
         }
     }
 }

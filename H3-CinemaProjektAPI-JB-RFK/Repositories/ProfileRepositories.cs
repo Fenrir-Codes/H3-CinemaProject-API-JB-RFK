@@ -9,11 +9,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 {
     public class ProfileRepositories  : IProfileRepositories 
     {
-        private readonly DataBaseContext _context;
+        private readonly DataBaseContext context;
 
-        public ProfileRepositories(DataBaseContext context)
+        public ProfileRepositories(DataBaseContext _context)
         {
-            _context = context;
+            context = _context;
         }
     }
 }

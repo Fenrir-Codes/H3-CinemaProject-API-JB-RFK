@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 {
-    public class PaymentDetailsRepositories : IPaymentDeatailsRepositories
+    public class PaymentDetailsRepositories :IPaymentDeatailsRepositories
     {
-        private readonly DataBaseContext _context;
+        private readonly DataBaseContext context;
 
-        public PaymentDetailsRepositories(DataBaseContext context)
+        public PaymentDetailsRepositories(DataBaseContext _context)
         {
-            _context = context;
+            context = _context;
         }
     }
 }

@@ -7,102 +7,106 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using H3_CinemaProjektAPI_JB_RFK.DataBase;
 using H3_CinemaProjektAPI_JB_RFK.Model;
+using H3_CinemaProjektAPI_JB_RFK.Interfaces;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 {
-    //[Route("api/[controller]")]
-    //[ApiController]
-    //public class BookingsController : ControllerBase
-    //{
-    //    private readonly DataBaseContext _context;
+    [Route("api/[controller]")]
+    [ApiController]
+    public class BookingsController : ControllerBase
+    {
+        private readonly DataBaseContext _context;
 
-    //    public BookingsController(DataBaseContext context)
-    //    {
-    //        _context = context;
-    //    }
+        private readonly IBookingService bookingContext;
 
-    //    // GET: api/Bookings
-    //    [HttpGet]
-    //    public async Task<ActionResult<IEnumerable<Booking>>> GetBooking()
-    //    {
-    //        return await _context.Booking.ToListAsync();
-    //    }
+        public BookingsController(IBookingService context)
+        {
+            bookingContext = context;
 
-    //    // GET: api/Bookings/5
-    //    [HttpGet("{id}")]
-    //    public async Task<ActionResult<Booking>> GetBooking(int id)
-    //    {
-    //        var booking = await _context.Booking.FindAsync(id);
+        }
 
-    //        if (booking == null)
-    //        {
-    //            return NotFound();
-    //        }
+        // GET: api/Bookings
+        //    [HttpGet]
+        //    public async Task<ActionResult<IEnumerable<Booking>>> GetBooking()
+        //    {
+        //        return await _context.Booking.ToListAsync();
+        //    }
 
-    //        return booking;
-    //    }
+        //    // GET: api/Bookings/5
+        //    [HttpGet("{id}")]
+        //    public async Task<ActionResult<Booking>> GetBooking(int id)
+        //    {
+        //        var booking = await _context.Booking.FindAsync(id);
 
-    //    // PUT: api/Bookings/5
-    //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    //    [HttpPut("{id}")]
-    //    public async Task<IActionResult> PutBooking(int id, Booking booking)
-    //    {
-    //        if (id != booking.BookingId)
-    //        {
-    //            return BadRequest();
-    //        }
+        //        if (booking == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-    //        _context.Entry(booking).State = EntityState.Modified;
+        //        return booking;
+        //    }
 
-    //        try
-    //        {
-    //            await _context.SaveChangesAsync();
-    //        }
-    //        catch (DbUpdateConcurrencyException)
-    //        {
-    //            if (!BookingExists(id))
-    //            {
-    //                return NotFound();
-    //            }
-    //            else
-    //            {
-    //                throw;
-    //            }
-    //        }
+        //    // PUT: api/Bookings/5
+        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //    [HttpPut("{id}")]
+        //    public async Task<IActionResult> PutBooking(int id, Booking booking)
+        //    {
+        //        if (id != booking.BookingId)
+        //        {
+        //            return BadRequest();
+        //        }
 
-    //        return NoContent();
-    //    }
+        //        _context.Entry(booking).State = EntityState.Modified;
 
-    //    // POST: api/Bookings
-    //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    //    [HttpPost]
-    //    public async Task<ActionResult<Booking>> PostBooking(Booking booking)
-    //    {
-    //        _context.Booking.Add(booking);
-    //        await _context.SaveChangesAsync();
+        //        try
+        //        {
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!BookingExists(id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
 
-    //        return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
-    //    }
+        //        return NoContent();
+        //    }
 
-    //    // DELETE: api/Bookings/5
-    //    [HttpDelete("{id}")]
-    //    public async Task<IActionResult> DeleteBooking(int id)
-    //    {
-    //        var booking = await _context.Booking.FindAsync(id);
-    //        if (booking == null)
-    //        {
-    //            return NotFound();
-    //        }
+        //    // POST: api/Bookings
+        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //    [HttpPost]
+        //    public async Task<ActionResult<Booking>> PostBooking(Booking booking)
+        //    {
+        //        _context.Booking.Add(booking);
+        //        await _context.SaveChangesAsync();
 
-    //        _context.Booking.Remove(booking);
-    //        await _context.SaveChangesAsync();
+        //        return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
+        //    }
 
-    //        return NoContent();
-    //    }
+        //    // DELETE: api/Bookings/5
+        //    [HttpDelete("{id}")]
+        //    public async Task<IActionResult> DeleteBooking(int id)
+        //    {
+        //        var booking = await _context.Booking.FindAsync(id);
+        //        if (booking == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-    //    private bool BookingExists(int id)
-    //    {
-    //        return _context.Booking.Any(e => e.BookingId == id);
-    //    }
-    //}
+        //        _context.Booking.Remove(booking);
+        //        await _context.SaveChangesAsync();
+
+        //        return NoContent();
+        //    }
+
+        //    private bool BookingExists(int id)
+        //    {
+        //        return _context.Booking.Any(e => e.BookingId == id);
+        //    }
+    }
 }
