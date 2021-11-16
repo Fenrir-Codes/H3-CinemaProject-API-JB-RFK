@@ -15,15 +15,15 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
     [ApiController]
     public class BookingsController : ControllerBase
     {
-        //private readonly DataBaseContext _context;
+      //  private readonly DataBaseContext _context;
 
-        //private readonly IBookingService bookingContext;
+        private readonly IBookingService bookingContext;
 
-        //public BookingsController(IBookingService context)
-        //{
-        //    bookingContext = context;
+        public BookingsController(IBookingService context)
+        {
+            bookingContext = context;
 
-        //}
+        }
 
         // GET: api/Bookings
         //    [HttpGet]
