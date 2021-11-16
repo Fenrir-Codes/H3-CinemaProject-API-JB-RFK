@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3_CinemaProjektAPI_JB_RFK.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20211115111540_SecondMigration")]
-    partial class SecondMigration
+    [Migration("20211115121209_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
