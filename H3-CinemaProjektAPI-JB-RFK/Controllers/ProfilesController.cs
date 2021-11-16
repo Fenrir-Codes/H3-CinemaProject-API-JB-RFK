@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using H3_CinemaProjektAPI_JB_RFK.DataBase;
 using H3_CinemaProjektAPI_JB_RFK.Model;
 using H3_CinemaProjektAPI_JB_RFK.Interfaces;
+using H3_CinemaProjektAPI_JB_RFK.DTO;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 {
@@ -25,11 +26,25 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         #region login function
         //Login via profile with email and password
         [HttpPost("Login")]
-        public async Task<ActionResult<List<Profile>>> Login(string Email, string password)
+        public async Task<ActionResult> Login(string Email, string password)
         {
             try
             {
-                return Ok(await _context.Login(Email, password));
+                var user = await _context.Login(Email, password);
+
+                //this if statement grabbing the object from the ProfileRepositories
+                if (user != null)
+                {
+                    return Ok(user);
+                }
+                else
+                {
+                  
+                    //if the login was not successfull or returned empty object. 
+                    //So the shit api wont crash and exit. fuck yeah i am bloody tired...........
+                    return BadRequest(400 + " -  Wrong email and/or password or not registered profile!");
+                }
+
             }
             catch (Exception ex)
             {
@@ -61,7 +76,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         #region get profile with id
         //Get profile with id
         [HttpGet("{id}")]
-        public async Task<ActionResult<Profile>> GetProfile(int id)
+        public async Task<ActionResult> GetProfile(int id)
         {
             try
             {

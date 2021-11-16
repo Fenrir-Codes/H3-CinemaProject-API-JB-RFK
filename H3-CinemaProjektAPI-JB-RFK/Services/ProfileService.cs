@@ -19,7 +19,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
 
         #region login function
         //Login
-        public async Task<List<ProfileResponse>> Login(string Email, string password)
+        public async Task<ProfileResponse> Login(string Email, string password)
         {
             return await _context.Login(Email,password);
         }

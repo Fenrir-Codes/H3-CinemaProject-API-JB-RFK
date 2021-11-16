@@ -48,22 +48,62 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 
         #region login function
         //Login
-        public async Task<List<ProfileResponse>> Login(string mail, string password)
+        public async Task<ProfileResponse> Login(string mail, string password)
         {
-            var profile = await context.Profile.Where(e => e.Email == mail && e.Password == password).ToListAsync();
-            return profile.Select(obj => new ProfileResponse
-            {
-                ProfileId = obj.ProfileId,
-                Email = obj.Email,
-                Firstname = obj.Firstname,
-                Lastname = obj.Lastname,
-                Address = obj.Address,
-                Phone = obj.Phone,
-                Role = obj.Role
+            //En Task er et objekt, der repræsenterer noget arbejde, skal udføres.
+            //Opgaven kan fortælle dig, om arbejdet er afsluttet, og hvis operationen returnerer et resultat, giver opgaven dig resultatet.
 
-            }).ToList();
-    
-          
+            //user object (Profile)
+            var user = await context.Profile.Where(user => user.Email == mail && user.Password == password).FirstOrDefaultAsync();
+            //if the object is not empty ->
+            if (user != null )
+            {
+                //fill the response object with values ->
+                var response = new ProfileResponse();
+                {
+                    response.ProfileId = user.ProfileId;
+                    response.Firstname = user.Firstname;
+                    response.Lastname = user.Lastname;
+                    response.Address = user.Address;
+                    response.Email = user.Email;
+                    response.Phone = user.Phone;
+                    response.Role = user.Role;
+                }
+                //then return the object ->
+                return response;
+            }
+            // else return null (empty object)
+            return null;
+
+            // jeg skal fylde data i profile fra mit api
+            //profile.Email = mail;
+
+
+            //return profile.(obj => new ProfileResponse
+            //{
+            //    ProfileId = obj.ProfileId,
+            //    Email = obj.Email,
+            //    Firstname = obj.Firstname,
+            //    Lastname = obj.Lastname,
+            //    Address = obj.Address,
+            //    Phone = obj.Phone,
+            //    Role = obj.Role
+
+            //}).ToList();
+
+            //var profile = await context.Profile.Where(e => e.Email == mail && e.Password == password).ToListAsync();
+            //return profile.Select(obj => new ProfileResponse
+            //{
+            //    ProfileId = obj.ProfileId,
+            //    Email = obj.Email,
+            //    Firstname = obj.Firstname,
+            //    Lastname = obj.Lastname,
+            //    Address = obj.Address,
+            //    Phone = obj.Phone,
+            //    Role = obj.Role
+
+            //}).ToList();
+
         }
         #endregion
 
