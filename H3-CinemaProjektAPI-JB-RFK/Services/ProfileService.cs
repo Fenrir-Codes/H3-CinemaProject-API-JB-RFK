@@ -17,16 +17,29 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             _context = context;
         }
 
+        #region login function
         //Login
         public async Task<List<ProfileResponse>> Login(string Email, string password)
         {
             return await _context.Login(Email,password);
         }
+        #endregion
 
+        #region get all profiles
+        //getting all profiles to list
+        public async Task<List<Profile>> GetProfiles()
+        {
+            return await _context.GetProfiles();
+        }
+        #endregion
+
+        #region get one profile with id
+        //get one profile with id
         public async Task<Profile> GetProfile(int id)
         {
             return await _context.GetProfile(id);
         }
+        #endregion
 
 
 

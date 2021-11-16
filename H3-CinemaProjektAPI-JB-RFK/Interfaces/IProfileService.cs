@@ -9,8 +9,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
 {
     public interface IProfileService
     {
+        //login
         Task<List<ProfileResponse>> Login(string Email, string password);
 
+        //get all profiles
+        Task<List<Profile>> GetProfiles();
+
+        //get one profile with id
         Task<Profile> GetProfile(int id);
     }
 }

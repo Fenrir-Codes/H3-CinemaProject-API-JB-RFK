@@ -22,24 +22,65 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
-
+        #region login function
         //Login via profile with email and password
         [HttpPost("Login")]
         public async Task<ActionResult<List<Profile>>> Login(string Email, string password)
         {
-            return Ok(await _context.Login(Email, password));
+            try
+            {
+                return Ok(await _context.Login(Email, password));
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(400, ex.Message);
+            }
+            
         }
+        #endregion
 
+        #region get all profiles
+        //getting all profiles to list
+        [HttpGet]
+        public async Task<ActionResult<List<Profile>>> GetProfiles()
+        {
+            try
+            {
+                return await _context.GetProfiles();
+            }
+            catch (Exception ex)
+            {
 
+                return StatusCode(400, ex.Message);
+            }
+        
+        }
+        #endregion
+
+        #region get profile with id
         //Get profile with id
         [HttpGet("{id}")]
         public async Task<ActionResult<Profile>> GetProfile(int id)
         {
-            return Ok(await _context.GetProfile(id));
+            try
+            {
+                return Ok(await _context.GetProfile(id));
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(400, ex.Message);
+            }
+         
         }
+        #endregion
 
 
 
+
+
+        #region generated code commented out
         // GET: api/Profiles
         //[HttpGet]
         //public async Task<ActionResult<IEnumerable<Profile>>> GetProfile()
@@ -124,5 +165,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //    return _context.Profile.Any(e => e.ProfileId == id);
         //}
         //}
+        #endregion
     }
 }

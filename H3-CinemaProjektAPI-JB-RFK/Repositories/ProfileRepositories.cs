@@ -20,18 +20,23 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        #region getting all profiles function
         //getting the profiles (all)
-        public async Task<ActionResult<IEnumerable<Profile>>> GetProfile()
+        public async Task<List<Profile>> GetProfiles()
         {
             return await context.Profile.ToListAsync();
         }
+        #endregion
 
+        #region getting profile with id function
         //getting the profile with id
         public async Task<Profile> GetProfile(int id)
         {
             return await context.Profile.FindAsync(id);
         }
+        #endregion
 
+        #region create profile function
         //create profile data
         public async Task<Profile> CreateProfile(Profile data)
         {
@@ -39,7 +44,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             await context.SaveChangesAsync();
             return data;
         }
+        #endregion
 
+        #region login function
         //Login
         public async Task<List<ProfileResponse>> Login(string mail, string password)
         {
@@ -58,5 +65,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
     
           
         }
+        #endregion
+
     }
 }
