@@ -1,5 +1,8 @@
 ﻿using H3_CinemaProjektAPI_JB_RFK.DataBase;
 using H3_CinemaProjektAPI_JB_RFK.Interfaces;
+using H3_CinemaProjektAPI_JB_RFK.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +17,33 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         public ProfileRepositories(DataBaseContext _context)
         {
             context = _context;
+        }
+
+        //getting the profiles (all)
+        public async Task<ActionResult<IEnumerable<Profile>>> GetProfile()
+        {
+            return await context.Profile.ToListAsync();
+        }
+
+        //getting the profile with id
+        public async Task<List<Profile>> GetProfile(int id)
+        {
+            return await context.Profile.Where(i => i.ProfileId == id).ToListAsync();
+        }
+
+        //create profile data
+        public async Task<Profile> CreateProfile(Profile data)
+        {
+            context.Profile.Add(data);
+            await context.SaveChangesAsync();
+            return data;
+        }
+
+        //Login
+        public async Task<List<Profile>> Login(string Email, string password)
+        {
+            return await context.Profile.Where(e => e.Email == Email && e.Password == password).ToListAsync();
+          
         }
     }
 }
