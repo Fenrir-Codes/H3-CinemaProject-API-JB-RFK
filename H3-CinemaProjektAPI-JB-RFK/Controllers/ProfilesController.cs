@@ -30,6 +30,12 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             return Ok(await _context.GetProfile(Id));
         }
 
+        [HttpPost("Profile/Login")]
+        public async Task<ActionResult<List<Profile>>> Login(string Email, string password)
+        {
+            return Ok(await _context.Login(Email, password));
+        }
+
         //    // GET: api/Profiles/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<Profile>> GetProfile(int id)
@@ -106,5 +112,5 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //    {
         //        return _context.Profile.Any(e => e.ProfileId == id);
         //    }
-        }
+    }
     }

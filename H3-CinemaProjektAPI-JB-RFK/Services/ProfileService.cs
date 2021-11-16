@@ -9,16 +9,22 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
 {
     public class ProfileService : IProfileService
     {
-        private readonly IProfileRepositories context;
+        private readonly IProfileRepositories _context;
 
-        public ProfileService(IProfileRepositories _context)
+        public ProfileService(IProfileRepositories context)
         {
-            context = _context;
+            _context = context;
         }
 
         public async Task<Profile> GetProfile(int Id)
         {
-            return await context.GetProfile(Id);
+            return await _context.GetProfile(Id);
+        }
+
+        //Login
+        public async Task<List<Profile>> Login(string Email, string password)
+        {
+            return await _context.Login(Email, password);
         }
     }
 }
