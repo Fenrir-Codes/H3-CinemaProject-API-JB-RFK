@@ -27,9 +27,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
 
         //getting the profile with id
-        public async Task<List<Profile>> GetProfile(int id)
+        public async Task<Profile> GetProfile(int id)
         {
-            return await context.Profile.Where(i => i.ProfileId == id).ToListAsync();
+            return await context.Profile.FindAsync(id);
         }
 
         //create profile data

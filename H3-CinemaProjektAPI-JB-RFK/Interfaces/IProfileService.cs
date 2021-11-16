@@ -11,6 +11,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
     {
         Task<List<ProfileResponse>> Login(string Email, string password);
 
-        Task<List<Profile>> GetProfile(int id);
+        Task<Profile> GetProfile(int id);
     }
 }

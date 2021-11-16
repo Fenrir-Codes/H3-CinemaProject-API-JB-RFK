@@ -23,7 +23,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             return await _context.Login(Email,password);
         }
 
-        public async Task<List<Profile>> GetProfile(int id)
+        public async Task<Profile> GetProfile(int id)
         {
             return await _context.GetProfile(id);
         }

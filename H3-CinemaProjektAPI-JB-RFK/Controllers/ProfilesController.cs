@@ -33,7 +33,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         //Get profile with id
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Profile>>> GetProfile(int id)
+        public async Task<ActionResult<Profile>> GetProfile(int id)
         {
             return Ok(await _context.GetProfile(id));
         }
