@@ -1,4 +1,5 @@
-﻿using H3_CinemaProjektAPI_JB_RFK.Interfaces;
+﻿using H3_CinemaProjektAPI_JB_RFK.DataBase;
+using H3_CinemaProjektAPI_JB_RFK.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,5 +9,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 {
     public class DirectorsRepositories :IDirectorsRepositories
     {
+        private readonly DataBaseContext context;
+
+        public DirectorsRepositories(DataBaseContext _context)
+        {
+            context = _context;
+        }
     }
 }
