@@ -23,7 +23,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
 
 
-        [HttpPost("Login")]
+        [HttpPost("Profile/Login")]
         public async Task<ActionResult<List<Profile>>> Login(string Email, string password) 
         {
             return Ok(await _context.Login(Email, password));

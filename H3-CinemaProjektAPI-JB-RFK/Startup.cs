@@ -54,7 +54,7 @@ namespace H3_CinemaProjektAPI_JB_RFK
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IMovieRepositories, MovieRepositories>();
             services.AddScoped<IPaymentDetailsService, PaymentDetailsService>();
-            //services.AddScoped<IPaymentDetailsRepositories, PaymentDetailsRepositories>();
+            services.AddScoped<IPaymentDeatailsRepositories, PaymentDetailsRepositories>();
             services.AddScoped<IProfileService, ProfileService>();
             services.AddScoped<IProfileRepositories, ProfileRepositories>();
             services.AddScoped<ISeatNumberService, SeatNumberService>();
