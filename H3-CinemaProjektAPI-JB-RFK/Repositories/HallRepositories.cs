@@ -9,11 +9,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 {
     public class HallRepositories :IHallRepositories
     {
-        private readonly DataBaseContext context;
+        //private readonly DataBaseContext context;
 
-        public HallRepositories(DataBaseContext _context)
-        {
-            context = _context;
-        }
+        //public HallRepositories(DataBaseContext _context)
+        //{
+        //    context = _context;
+        //}
     }
 }

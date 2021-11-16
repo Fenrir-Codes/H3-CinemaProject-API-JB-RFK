@@ -9,11 +9,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 {
     public class PaymentDetailsRepositories :IPaymentDeatailsRepositories
     {
-        private readonly DataBaseContext context;
+        //private readonly DataBaseContext context;
 
-        public PaymentDetailsRepositories(DataBaseContext _context)
-        {
-            context = _context;
-        }
+        //public PaymentDetailsRepositories(DataBaseContext _context)
+        //{
+        //    context = _context;
+        //}
     }
 }

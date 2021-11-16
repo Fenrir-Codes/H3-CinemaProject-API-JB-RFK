@@ -9,11 +9,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 {
     public class DirectorsRepositories :IDirectorsRepositories
     {
-        private readonly DataBaseContext context;
+        //private readonly DataBaseContext context;
 
-        public DirectorsRepositories(DataBaseContext _context)
-        {
-            context = _context;
-        }
+        //public DirectorsRepositories(DataBaseContext _context)
+        //{
+        //    context = _context;
+        //}
     }
 }
