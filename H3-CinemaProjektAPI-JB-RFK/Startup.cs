@@ -50,7 +50,7 @@ namespace H3_CinemaProjektAPI_JB_RFK
             services.AddScoped<IDirectorsService, DirectorsService>();
             services.AddScoped<IDirectorsRepositories, DirectorsRepositories>();
             services.AddScoped<IHallService, HallService>();
-            services.AddScoped<HallRepositories, HallRepositories>();
+            services.AddScoped<IHallRepositories, HallRepositories>();
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IMovieRepositories, MovieRepositories>();
             services.AddScoped<IPaymentDetailsService, PaymentDetailsService>();

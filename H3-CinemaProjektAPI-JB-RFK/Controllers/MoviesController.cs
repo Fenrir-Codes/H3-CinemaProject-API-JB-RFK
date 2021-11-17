@@ -29,6 +29,32 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             return Ok(await _context.GetMovie(Id));
         }
 
+        [HttpGet("AllMovies")]
+        public async Task<ActionResult> GetAllMovies()
+        {
+            try
+            {
+                List<Movie> movieList = await _context.GetAllMovies();
+                if (movieList == null)
+                {
+                    return Problem("Nothing was returned");
+                }
+                if (movieList.Count == 0)
+                {
+                    return NoContent(); // 204
+                }
+                return Ok(movieList);
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+            //return Ok(await _context.GetAllMovies());
+
+        }
+
+
+
         //    // GET: api/Movies/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<Movie>> GetMovie(int id)
@@ -105,5 +131,5 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //    {
         //        return _context.Movie.Any(e => e.MovieId == id);
         //    }
-        }
+    }
     }

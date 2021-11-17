@@ -39,10 +39,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             return movieList;
         }
 
-        public Task<List<Movie>> GetAllMovies(string title)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<Movie> GetMovie(int Id)
         {
