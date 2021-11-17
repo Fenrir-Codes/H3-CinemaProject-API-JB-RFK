@@ -51,81 +51,85 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
-        //    // GET: api/Directors/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Directors>> GetDirectors(int id)
-        //{
-        //    var directors = await _context.Directors.FindAsync(id);
+        // DELETE: api/Directors/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteDirectors(int id)
+        {
+            try
+            {
+                bool result = await _context.DeleteDirector(id);
+                if (!result)
+                {
+                    return Problem("Director was not deleted, something went wrong");
+                }
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
 
-        //    if (directors == null)
-        //    {
-        //        return NotFound();
-        //    }
+            //    // GET: api/Directors/5
+            //[HttpGet("{id}")]
+            //public async Task<ActionResult<Directors>> GetDirectors(int id)
+            //{
+            //    var directors = await _context.Directors.FindAsync(id);
 
-        //    return directors;
-        //}
+            //    if (directors == null)
+            //    {
+            //        return NotFound();
+            //    }
 
-        //    // PUT: api/Directors/5
-        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //    [HttpPut("{id}")]
-        //    public async Task<IActionResult> PutDirectors(int id, Directors directors)
-        //    {
-        //        if (id != directors.DirectorsId)
-        //        {
-        //            return BadRequest();
-        //        }
+            //    return directors;
+            //}
 
-        //        _context.Entry(directors).State = EntityState.Modified;
+            //    // PUT: api/Directors/5
+            //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+            //    [HttpPut("{id}")]
+            //    public async Task<IActionResult> PutDirectors(int id, Directors directors)
+            //    {
+            //        if (id != directors.DirectorsId)
+            //        {
+            //            return BadRequest();
+            //        }
 
-        //        try
-        //        {
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!DirectorsExists(id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
+            //        _context.Entry(directors).State = EntityState.Modified;
 
-        //        return NoContent();
-        //    }
+            //        try
+            //        {
+            //            await _context.SaveChangesAsync();
+            //        }
+            //        catch (DbUpdateConcurrencyException)
+            //        {
+            //            if (!DirectorsExists(id))
+            //            {
+            //                return NotFound();
+            //            }
+            //            else
+            //            {
+            //                throw;
+            //            }
+            //        }
 
-        //    // POST: api/Directors
-        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //    [HttpPost]
-        //    public async Task<ActionResult<Directors>> PostDirectors(Directors directors)
-        //    {
-        //        _context.Directors.Add(directors);
-        //        await _context.SaveChangesAsync();
+            //        return NoContent();
+            //    }
 
-        //        return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
-        //    }
+            //    // POST: api/Directors
+            //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+            //    [HttpPost]
+            //    public async Task<ActionResult<Directors>> PostDirectors(Directors directors)
+            //    {
+            //        _context.Directors.Add(directors);
+            //        await _context.SaveChangesAsync();
 
-        //    // DELETE: api/Directors/5
-        //    [HttpDelete("{id}")]
-        //    public async Task<IActionResult> DeleteDirectors(int id)
-        //    {
-        //        var directors = await _context.Directors.FindAsync(id);
-        //        if (directors == null)
-        //        {
-        //            return NotFound();
-        //        }
+            //        return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
+            //    }
 
-        //        _context.Directors.Remove(directors);
-        //        await _context.SaveChangesAsync();
 
-        //        return NoContent();
-        //    }
-
-        //    private bool DirectorsExists(int id)
-        //    {
-        //        return _context.Directors.Any(e => e.DirectorsId == id);
-        //    }
-    }
+            //    private bool DirectorsExists(int id)
+            //    {
+            //        return _context.Directors.Any(e => e.DirectorsId == id);
+            //    }
+        }
     }
