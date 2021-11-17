@@ -55,8 +55,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 
             //user object (Profile)
             var user = await context.Profile.Where(user => user.Email == mail && user.Password == password).FirstOrDefaultAsync();
-            //if the object is not empty ->
-            if (user != null )
+            //if the object is not empty ->   
+            if (user != null)
             {
                 //fill the response object with values ->
                 var response = new ProfileResponse();
