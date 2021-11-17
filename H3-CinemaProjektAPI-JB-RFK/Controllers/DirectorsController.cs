@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using H3_CinemaProjektAPI_JB_RFK.DataBase;
 using H3_CinemaProjektAPI_JB_RFK.Model;
+using H3_CinemaProjektAPI_JB_RFK.Interfaces;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 {
@@ -14,95 +15,121 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
     [ApiController]
     public class DirectorsController : ControllerBase
     {
-        private readonly DataBaseContext _context;
+        private readonly IDirectorsService _context;
 
-        public DirectorsController(DataBaseContext context)
+        public DirectorsController(IDirectorsService context)
         {
             _context = context;
         }
 
         // GET: api/Directors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Directors>>> GetDirectors()
+        public async Task<ActionResult> GetDirector(int Id)
         {
-            return await _context.Directors.ToListAsync();
+            return Ok(await _context.GetDirector(Id));
         }
 
-        // GET: api/Directors/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Directors>> GetDirectors(int id)
+        [HttpGet("GetAllDirectors")]
+        public async Task<ActionResult> GetAllDirectors()
         {
-            var directors = await _context.Directors.FindAsync(id);
-
-            if (directors == null)
-            {
-                return NotFound();
-            }
-
-            return directors;
-        }
-
-        // PUT: api/Directors/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDirectors(int id, Directors directors)
-        {
-            if (id != directors.DirectorsId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(directors).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                List<Directors> directorList = await _context.GetAllDirectors();
+                if (directorList == null)
+                {
+                    return Problem("Nothing was returned");
+                }
+                if (directorList.Count == 0)
+                {
+                    return NoContent(); // 204
+                }
+                return Ok(directorList);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
-                if (!DirectorsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return Problem(e.Message);
             }
-
-            return NoContent();
         }
 
         // POST: api/Directors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Directors>> PostDirectors(Directors directors)
+        public async Task<ActionResult<Directors>> CreateDirector(Directors directors)
         {
-            _context.Directors.Add(directors);
-            await _context.SaveChangesAsync();
+            await _context.CreateDirector(directors);
+            //await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
         }
 
         // DELETE: api/Directors/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDirectors(int id)
+        public async Task<ActionResult> DeleteDirectors(int id)
         {
-            var directors = await _context.Directors.FindAsync(id);
-            if (directors == null)
+            try
             {
-                return NotFound();
+                bool result = await _context.DeleteDirector(id);
+                if (!result)
+                {
+                    return Problem("Director was not deleted, something went wrong");
+                }
+                return NoContent();
             }
-
-            _context.Directors.Remove(directors);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
         }
 
-        private bool DirectorsExists(int id)
-        {
-            return _context.Directors.Any(e => e.DirectorsId == id);
-        }
+        //    // GET: api/Directors/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Directors>> GetDirectors(int id)
+        //{
+        //    var directors = await _context.Directors.FindAsync(id);
+
+        //    if (directors == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return directors;
+        //}
+
+        //    // PUT: api/Directors/5
+        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //    [HttpPut("{id}")]
+        //    public async Task<IActionResult> PutDirectors(int id, Directors directors)
+        //    {
+        //        if (id != directors.DirectorsId)
+        //        {
+        //            return BadRequest();
+        //        }
+
+        //        _context.Entry(directors).State = EntityState.Modified;
+
+        //        try
+        //        {
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!DirectorsExists(id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+
+        //        return NoContent();
+        //    }       
+
+
+        //    private bool DirectorsExists(int id)
+        //    {
+        //        return _context.Directors.Any(e => e.DirectorsId == id);
+        //    }
     }
 }

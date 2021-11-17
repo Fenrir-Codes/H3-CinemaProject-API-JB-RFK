@@ -36,7 +36,7 @@ namespace H3_CinemaProjektAPI_JB_RFK
                 options.AddPolicy("CORS",
                 builder =>
                 {
-                    builder.AllowAnyOrigin() 
+                    builder.AllowAnyOrigin()
                            .AllowAnyHeader()
                            .AllowAnyMethod();
                 });
@@ -61,6 +61,7 @@ namespace H3_CinemaProjektAPI_JB_RFK
             services.AddScoped<ISeatNumberRepositories, SeatNumberRepositories>();
 
             services.AddControllers();
+            //services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "H3_CinemaProjektAPI_JB_RFK", Version = "v1" });
@@ -85,10 +86,17 @@ namespace H3_CinemaProjektAPI_JB_RFK
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            try
             {
-                endpoints.MapControllers();
-            });
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
+            }
+            catch (System.Exception exp)
+            {
+                throw;
+            }
         }
     }
 }
