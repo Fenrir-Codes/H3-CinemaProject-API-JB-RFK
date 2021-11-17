@@ -7,102 +7,125 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using H3_CinemaProjektAPI_JB_RFK.DataBase;
 using H3_CinemaProjektAPI_JB_RFK.Model;
+using H3_CinemaProjektAPI_JB_RFK.Interfaces;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 {
-    //[Route("api/[controller]")]
-    //[ApiController]
-    //public class DirectorsController : ControllerBase
-    //{
-    //    private readonly DataBaseContext _context;
+    [Route("api/[controller]")]
+    [ApiController]
+    public class DirectorsController : ControllerBase
+    {
+        private readonly IDirectorsService _context;
 
-    //    public DirectorsController(DataBaseContext context)
-    //    {
-    //        _context = context;
-    //    }
+        public DirectorsController(IDirectorsService context)
+        {
+            _context = context;
+        }
 
-    //    // GET: api/Directors
-    //    [HttpGet]
-    //    public async Task<ActionResult<IEnumerable<Directors>>> GetDirectors()
-    //    {
-    //        return await _context.Directors.ToListAsync();
-    //    }
+        // GET: api/Directors
+        [HttpGet]
+        public async Task<ActionResult> GetDirector(int Id)
+        {
+            return Ok(await _context.GetDirector(Id));
+        }
 
-    //    // GET: api/Directors/5
-    //    [HttpGet("{id}")]
-    //    public async Task<ActionResult<Directors>> GetDirectors(int id)
-    //    {
-    //        var directors = await _context.Directors.FindAsync(id);
+        [HttpGet("GetAllDirectors")]
+        public async Task<ActionResult> GetAllDirectors()
+        {
+            try
+            {
+                List<Directors> directorList = await _context.GetAllDirectors();
+                if (directorList == null)
+                {
+                    return Problem("Nothing was returned");
+                }
+                if (directorList.Count == 0)
+                {
+                    return NoContent(); // 204
+                }
+                return Ok(directorList);
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
 
-    //        if (directors == null)
-    //        {
-    //            return NotFound();
-    //        }
+        //    // GET: api/Directors/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Directors>> GetDirectors(int id)
+        //{
+        //    var directors = await _context.Directors.FindAsync(id);
 
-    //        return directors;
-    //    }
+        //    if (directors == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-    //    // PUT: api/Directors/5
-    //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    //    [HttpPut("{id}")]
-    //    public async Task<IActionResult> PutDirectors(int id, Directors directors)
-    //    {
-    //        if (id != directors.DirectorsId)
-    //        {
-    //            return BadRequest();
-    //        }
+        //    return directors;
+        //}
 
-    //        _context.Entry(directors).State = EntityState.Modified;
+        //    // PUT: api/Directors/5
+        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //    [HttpPut("{id}")]
+        //    public async Task<IActionResult> PutDirectors(int id, Directors directors)
+        //    {
+        //        if (id != directors.DirectorsId)
+        //        {
+        //            return BadRequest();
+        //        }
 
-    //        try
-    //        {
-    //            await _context.SaveChangesAsync();
-    //        }
-    //        catch (DbUpdateConcurrencyException)
-    //        {
-    //            if (!DirectorsExists(id))
-    //            {
-    //                return NotFound();
-    //            }
-    //            else
-    //            {
-    //                throw;
-    //            }
-    //        }
+        //        _context.Entry(directors).State = EntityState.Modified;
 
-    //        return NoContent();
-    //    }
+        //        try
+        //        {
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!DirectorsExists(id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
 
-    //    // POST: api/Directors
-    //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    //    [HttpPost]
-    //    public async Task<ActionResult<Directors>> PostDirectors(Directors directors)
-    //    {
-    //        _context.Directors.Add(directors);
-    //        await _context.SaveChangesAsync();
+        //        return NoContent();
+        //    }
 
-    //        return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
-    //    }
+        //    // POST: api/Directors
+        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //    [HttpPost]
+        //    public async Task<ActionResult<Directors>> PostDirectors(Directors directors)
+        //    {
+        //        _context.Directors.Add(directors);
+        //        await _context.SaveChangesAsync();
 
-    //    // DELETE: api/Directors/5
-    //    [HttpDelete("{id}")]
-    //    public async Task<IActionResult> DeleteDirectors(int id)
-    //    {
-    //        var directors = await _context.Directors.FindAsync(id);
-    //        if (directors == null)
-    //        {
-    //            return NotFound();
-    //        }
+        //        return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
+        //    }
 
-    //        _context.Directors.Remove(directors);
-    //        await _context.SaveChangesAsync();
+        //    // DELETE: api/Directors/5
+        //    [HttpDelete("{id}")]
+        //    public async Task<IActionResult> DeleteDirectors(int id)
+        //    {
+        //        var directors = await _context.Directors.FindAsync(id);
+        //        if (directors == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-    //        return NoContent();
-    //    }
+        //        _context.Directors.Remove(directors);
+        //        await _context.SaveChangesAsync();
 
-    //    private bool DirectorsExists(int id)
-    //    {
-    //        return _context.Directors.Any(e => e.DirectorsId == id);
-    //    }
-    //}
-}
+        //        return NoContent();
+        //    }
+
+        //    private bool DirectorsExists(int id)
+        //    {
+        //        return _context.Directors.Any(e => e.DirectorsId == id);
+        //    }
+    }
+    }
