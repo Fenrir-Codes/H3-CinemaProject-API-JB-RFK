@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Migrations
 {
-    public partial class secondMigration : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,8 +27,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                 {
                     ProfileId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Firstname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Lastname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -53,7 +53,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Duration = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MovieLength = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DirectorsId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -130,8 +129,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                     PaymentDetailsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TransactionId = table.Column<int>(type: "int", nullable: false),
-                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Paid = table.Column<bool>(type: "bit", nullable: false, defaultValue:0),
+                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue:0),
+                    Paid = table.Column<bool>(type: "bit", nullable: false),
                     CardNumber = table.Column<int>(type: "int", nullable: false),
                     BookingId = table.Column<int>(type: "int", nullable: true)
                 },

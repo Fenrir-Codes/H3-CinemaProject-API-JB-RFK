@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3_CinemaProjektAPI_JB_RFK.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20211116185305_secondMigration")]
-    partial class secondMigration
+    [Migration("20211117080927_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -136,9 +136,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                     b.Property<string>("Language")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("MovieLength")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
@@ -192,7 +189,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Firstname")
@@ -202,7 +198,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Phone")
