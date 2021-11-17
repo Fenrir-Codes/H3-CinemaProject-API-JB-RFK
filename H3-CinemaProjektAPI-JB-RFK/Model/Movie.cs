@@ -15,7 +15,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
         public string Country { get; set; }
         public string Genre { get; set; }
         public DateTime Duration { get; set; }
-        public DateTime MovieLength { get; set; }
         public DateTime ReleaseDate { get; set; }
 
         /* EF Relations */

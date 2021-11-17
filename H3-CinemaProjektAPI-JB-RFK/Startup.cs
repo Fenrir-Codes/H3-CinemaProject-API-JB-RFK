@@ -1,5 +1,6 @@
 using H3_CinemaProjektAPI_JB_RFK.DataBase;
 using H3_CinemaProjektAPI_JB_RFK.Interfaces;
+using H3_CinemaProjektAPI_JB_RFK.Repositories;
 using H3_CinemaProjektAPI_JB_RFK.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,12 +46,19 @@ namespace H3_CinemaProjektAPI_JB_RFK
 
             //scopeing
             services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IBookingRepositories, BookingRepositories>();
             services.AddScoped<IDirectorsService, DirectorsService>();
+            services.AddScoped<IDirectorsRepositories, DirectorsRepositories>();
             services.AddScoped<IHallService, HallService>();
+            services.AddScoped<IHallRepositories, HallRepositories>();
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IMovieRepositories, MovieRepositories>();
             services.AddScoped<IPaymentDetailsService, PaymentDetailsService>();
+            services.AddScoped<IPaymentDeatailsRepositories, PaymentDetailsRepositories>();
             services.AddScoped<IProfileService, ProfileService>();
+            services.AddScoped<IProfileRepositories, ProfileRepositories>();
             services.AddScoped<ISeatNumberService, SeatNumberService>();
+            services.AddScoped<ISeatNumberRepositories, SeatNumberRepositories>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

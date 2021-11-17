@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace H3_CinemaProjektAPI_JB_RFK.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20211115121209_Initial")]
-    partial class Initial
+    [Migration("20211117080927_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.Booking", b =>
@@ -135,9 +135,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
 
                     b.Property<string>("Language")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("MovieLength")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
