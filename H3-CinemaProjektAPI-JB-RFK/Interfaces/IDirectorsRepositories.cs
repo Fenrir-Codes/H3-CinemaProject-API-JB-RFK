@@ -10,5 +10,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
     {
         Task<Directors> GetDirector(int Id);
         Task<List<Directors>> GetAllDirectors();
+        Task<Directors> DeleteDirector(int Id);
     }
 }
