@@ -25,13 +25,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         }
 
+        #region get booking (id)
         // GET: api/Bookings
         [HttpGet]
         public async Task<ActionResult<Booking>> GetBooking(int Id)
         {
             return Ok(await _context.GetBooking(Id));
         }
+        #endregion
 
+        #region get all bookings
         [HttpGet("GetAllBookings")]
         public async Task<ActionResult> GetAllBookings()
         {
@@ -53,7 +56,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
+
+
+        #region code commented out
         //    // GET: api/Bookings/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<Booking>> GetBooking(int id)
@@ -130,5 +137,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //    {
         //        return _context.Booking.Any(e => e.BookingId == id);
         //    }
+        #endregion
     }
 }

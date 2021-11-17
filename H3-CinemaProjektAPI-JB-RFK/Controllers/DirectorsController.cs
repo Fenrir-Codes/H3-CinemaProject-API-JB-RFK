@@ -21,14 +21,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         {
             _context = context;
         }
-
+        #region Get director with id
         // GET: api/Directors
         [HttpGet]
         public async Task<ActionResult> GetDirector(int Id)
         {
             return Ok(await _context.GetDirector(Id));
         }
+        #endregion
 
+        #region Get all directors
         [HttpGet("GetAllDirectors")]
         public async Task<ActionResult> GetAllDirectors()
         {
@@ -50,7 +52,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
+        #region create directors
         // POST: api/Directors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -61,7 +65,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
             return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
         }
+        #endregion
 
+        #region delete from directors
         // DELETE: api/Directors/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteDirectors(int id)
@@ -80,56 +86,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
-        //    // GET: api/Directors/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Directors>> GetDirectors(int id)
-        //{
-        //    var directors = await _context.Directors.FindAsync(id);
-
-        //    if (directors == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return directors;
-        //}
-
-        //    // PUT: api/Directors/5
-        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //    [HttpPut("{id}")]
-        //    public async Task<IActionResult> PutDirectors(int id, Directors directors)
-        //    {
-        //        if (id != directors.DirectorsId)
-        //        {
-        //            return BadRequest();
-        //        }
-
-        //        _context.Entry(directors).State = EntityState.Modified;
-
-        //        try
-        //        {
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!DirectorsExists(id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-
-        //        return NoContent();
-        //    }       
-
-
-        //    private bool DirectorsExists(int id)
-        //    {
-        //        return _context.Directors.Any(e => e.DirectorsId == id);
-        //    }
     }
 }

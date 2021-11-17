@@ -22,13 +22,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
+        #region get hall with id
         // GET: api/Halls
         [HttpGet]
         public async Task<ActionResult<Hall>> GetHall(int Id)
         {
             return Ok(await _context.GetHall(Id));
         }
+        #endregion
 
+        #region get all halls
         [HttpGet("GetAllHalls")]
         public async Task<ActionResult> GetAllHalls()
         {
@@ -50,8 +53,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
-        [HttpDelete("{id")]
+        #region delete hall (id)
+        [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteHall(int id)
         {
             try
@@ -68,67 +73,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
-        //    // GET: api/Halls/5
-        //    [HttpGet("{id}")]
-        //    public async Task<ActionResult<Hall>> GetHall(int id)
-        //    {
-        //        var hall = await _context.Hall.FindAsync(id);
-
-        //        if (hall == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        return hall;
-        //    }
-
-        //    // PUT: api/Halls/5
-        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //    [HttpPut("{id}")]
-        //    public async Task<IActionResult> PutHall(int id, Hall hall)
-        //    {
-        //        if (id != hall.HallId)
-        //        {
-        //            return BadRequest();
-        //        }
-
-        //        _context.Entry(hall).State = EntityState.Modified;
-
-        //        try
-        //        {
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!HallExists(id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-
-        //        return NoContent();
-        //    }
-
-        //    // POST: api/Halls
-        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //    [HttpPost]
-        //    public async Task<ActionResult<Hall>> PostHall(Hall hall)
-        //    {
-        //        _context.Hall.Add(hall);
-        //        await _context.SaveChangesAsync();
-
-        //        return CreatedAtAction("GetHall", new { id = hall.HallId }, hall);
-        //    }
-
-
-        //    private bool HallExists(int id)
-        //    {
-        //        return _context.Hall.Any(e => e.HallId == id);
-        //    }
     }
 }

@@ -86,17 +86,12 @@ namespace H3_CinemaProjektAPI_JB_RFK
 
             app.UseAuthorization();
 
-            try
+            app.UseEndpoints(endpoints =>
             {
-                app.UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllers();
-                });
-            }
-            catch (System.Exception exp)
-            {
-                throw;
-            }
+                endpoints.MapControllers();
+            });
+
+
         }
     }
 }

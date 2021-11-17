@@ -22,13 +22,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
+        #region get movie with id
         // GET: api/Movies
         [HttpGet]
         public async Task<ActionResult> GetMovie(int Id)
         {
             return Ok(await _context.GetMovie(Id));
         }
+        #endregion
 
+        #region get all movies
         [HttpGet("AllMovies")]
         public async Task<ActionResult> GetAllMovies()
         {
@@ -52,7 +55,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             //return Ok(await _context.GetAllMovies());
 
         }
+        #endregion
 
+        #region delete movie (id)
         // DELETE: api/Movies/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteMovie(int id)
@@ -71,7 +76,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
+
+
+        #region code commented out
 
         //    // GET: api/Movies/5
         //    [HttpGet("{id}")]
@@ -134,5 +143,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //    {
         //        return _context.Movie.Any(e => e.MovieId == id);
         //    }
+        #endregion
+
     }
 }
