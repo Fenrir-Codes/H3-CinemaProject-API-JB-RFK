@@ -51,7 +51,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
-        [HttpDelete("{id")]
+        [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteHall(int id)
         {
             try
