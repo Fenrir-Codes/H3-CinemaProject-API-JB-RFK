@@ -53,6 +53,24 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         }
 
+        // DELETE: api/Movies/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteMovie(int id)
+        {
+            try
+            {
+                bool result = await _context.DeleteMovie(id);
+                if (!result)
+                {
+                    return Problem("Movie was not deleted, something went wrong");
+                }
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
 
 
         //    // GET: api/Movies/5
@@ -111,25 +129,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //        return CreatedAtAction("GetMovie", new { id = movie.MovieId }, movie);
         //    }
 
-        //    // DELETE: api/Movies/5
-        //    [HttpDelete("{id}")]
-        //    public async Task<IActionResult> DeleteMovie(int id)
-        //    {
-        //        var movie = await _context.Movie.FindAsync(id);
-        //        if (movie == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        _context.Movie.Remove(movie);
-        //        await _context.SaveChangesAsync();
-
-        //        return NoContent();
-        //    }
 
         //    private bool MovieExists(int id)
         //    {
         //        return _context.Movie.Any(e => e.MovieId == id);
         //    }
     }
-    }
+}

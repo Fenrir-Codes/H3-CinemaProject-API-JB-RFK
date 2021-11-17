@@ -39,7 +39,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 }
                 else
                 {
-                  
+
                     //if the login was not successfull or returned empty object. 
                     //So the shit api wont crash and exit. fuck yeah i am bloody tired...........
                     return BadRequest(400 + " -  Wrong email and/or password or not registered profile!");
@@ -51,7 +51,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
                 return StatusCode(400, ex.Message);
             }
-            
+
         }
         #endregion
 
@@ -69,7 +69,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
                 return StatusCode(400, ex.Message);
             }
-        
+
         }
         #endregion
 
@@ -87,11 +87,29 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
                 return StatusCode(400, ex.Message);
             }
-         
+
         }
         #endregion
 
-
+        #region delete profile
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteProfile(int Id)
+        {
+            try
+            {
+                bool result = await _context.DeleteProfile(Id);
+                if (!result)
+                {
+                    return Problem("Profile was not deleted, something went wrong");
+                }
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
+        #endregion
 
 
 
@@ -179,7 +197,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //{
         //    return _context.Profile.Any(e => e.ProfileId == id);
         //}
-        //}
-        #endregion
     }
+    #endregion
 }
+

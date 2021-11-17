@@ -51,6 +51,25 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
+        // DELETE: api/SeatNumbers/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteSeatNumber(int id)
+        {
+            try
+            {
+                bool result = await _context.DeleteSeat(id);
+                if (!result)
+                {
+                    return Problem("Seatnumber was not deleted, something went wrong");
+                }
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
+
         //        // GET: api/SeatNumbers/5
         //        [HttpGet("{id}")]
         //        public async Task<ActionResult<SeatNumber>> GetSeatNumber(int id)
@@ -107,25 +126,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //            return CreatedAtAction("GetSeatNumber", new { id = seatNumber.SeatNumberId }, seatNumber);
         //        }
 
-        //        // DELETE: api/SeatNumbers/5
-        //        [HttpDelete("{id}")]
-        //        public async Task<IActionResult> DeleteSeatNumber(int id)
-        //        {
-        //            var seatNumber = await _context.SeatNumber.FindAsync(id);
-        //            if (seatNumber == null)
-        //            {
-        //                return NotFound();
-        //            }
-
-        //            _context.SeatNumber.Remove(seatNumber);
-        //            await _context.SaveChangesAsync();
-
-        //            return NoContent();
-        //        }
 
         //        private bool SeatNumberExists(int id)
         //        {
         //            return _context.SeatNumber.Any(e => e.SeatNumberId == id);
         //        }
-        }
     }
+}

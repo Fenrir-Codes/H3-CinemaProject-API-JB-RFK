@@ -15,9 +15,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
     [ApiController]
     public class HallsController : ControllerBase
     {
-        private readonly IHallRepositories _context;
+        private readonly IHallService _context;
 
-        public HallsController(IHallRepositories context)
+        public HallsController(IHallService context)
         {
             _context = context;
         }
@@ -49,7 +49,25 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             {
                 return Problem(e.Message);
             }
-        }   
+        }
+
+        [HttpDelete("{id")]
+        public async Task<ActionResult> DeleteHall(int id)
+        {
+            try
+            {
+                bool result = await _context.DeleteHall(id);
+                if (!result)
+                {
+                    return Problem("Hall was not deleted, something went wrong");
+                }
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
 
         //    // GET: api/Halls/5
         //    [HttpGet("{id}")]
@@ -107,25 +125,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //        return CreatedAtAction("GetHall", new { id = hall.HallId }, hall);
         //    }
 
-        //    // DELETE: api/Halls/5
-        //    [HttpDelete("{id}")]
-        //    public async Task<IActionResult> DeleteHall(int id)
-        //    {
-        //        var hall = await _context.Hall.FindAsync(id);
-        //        if (hall == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        _context.Hall.Remove(hall);
-        //        await _context.SaveChangesAsync();
-
-        //        return NoContent();
-        //    }
 
         //    private bool HallExists(int id)
         //    {
         //        return _context.Hall.Any(e => e.HallId == id);
         //    }
-        }
     }
+}

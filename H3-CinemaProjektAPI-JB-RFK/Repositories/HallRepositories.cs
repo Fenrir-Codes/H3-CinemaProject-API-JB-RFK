@@ -18,6 +18,17 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        public async Task<Hall> DeleteHall(int Id)
+        {
+            var hall = context.Hall.Find(Id);
+            if (hall != null)
+            {
+                context.Hall.Remove(hall);
+                await context.SaveChangesAsync();
+            }
+            return hall;
+        }
+
         public async Task<List<Hall>> GetAllHalls()
         {
             List<Hall> hallList = await context.Hall.ToListAsync();

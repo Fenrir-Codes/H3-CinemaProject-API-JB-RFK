@@ -51,6 +51,17 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
+        // POST: api/Directors
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Directors>> CreateDirector(Directors directors)
+        {
+            await _context.CreateDirector(directors);
+            //await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
+        }
+
         // DELETE: api/Directors/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteDirectors(int id)
@@ -70,66 +81,55 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
-            //    // GET: api/Directors/5
-            //[HttpGet("{id}")]
-            //public async Task<ActionResult<Directors>> GetDirectors(int id)
-            //{
-            //    var directors = await _context.Directors.FindAsync(id);
+        //    // GET: api/Directors/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Directors>> GetDirectors(int id)
+        //{
+        //    var directors = await _context.Directors.FindAsync(id);
 
-            //    if (directors == null)
-            //    {
-            //        return NotFound();
-            //    }
+        //    if (directors == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            //    return directors;
-            //}
+        //    return directors;
+        //}
 
-            //    // PUT: api/Directors/5
-            //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-            //    [HttpPut("{id}")]
-            //    public async Task<IActionResult> PutDirectors(int id, Directors directors)
-            //    {
-            //        if (id != directors.DirectorsId)
-            //        {
-            //            return BadRequest();
-            //        }
+        //    // PUT: api/Directors/5
+        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //    [HttpPut("{id}")]
+        //    public async Task<IActionResult> PutDirectors(int id, Directors directors)
+        //    {
+        //        if (id != directors.DirectorsId)
+        //        {
+        //            return BadRequest();
+        //        }
 
-            //        _context.Entry(directors).State = EntityState.Modified;
+        //        _context.Entry(directors).State = EntityState.Modified;
 
-            //        try
-            //        {
-            //            await _context.SaveChangesAsync();
-            //        }
-            //        catch (DbUpdateConcurrencyException)
-            //        {
-            //            if (!DirectorsExists(id))
-            //            {
-            //                return NotFound();
-            //            }
-            //            else
-            //            {
-            //                throw;
-            //            }
-            //        }
+        //        try
+        //        {
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!DirectorsExists(id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
 
-            //        return NoContent();
-            //    }
-
-            //    // POST: api/Directors
-            //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-            //    [HttpPost]
-            //    public async Task<ActionResult<Directors>> PostDirectors(Directors directors)
-            //    {
-            //        _context.Directors.Add(directors);
-            //        await _context.SaveChangesAsync();
-
-            //        return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
-            //    }
+        //        return NoContent();
+        //    }       
 
 
-            //    private bool DirectorsExists(int id)
-            //    {
-            //        return _context.Directors.Any(e => e.DirectorsId == id);
-            //    }
-        }
+        //    private bool DirectorsExists(int id)
+        //    {
+        //        return _context.Directors.Any(e => e.DirectorsId == id);
+        //    }
     }
+}

@@ -51,6 +51,25 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
+        // DELETE: api/PaymentDetails/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePaymentDetails(int id)
+        {
+            try
+            {
+                bool result = await _context.DeletePayment(id);
+                if (!result)
+                {
+                    return Problem("Payment was not deleted, something went wrong");
+                }
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
+
         //    // GET: api/PaymentDetails/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<PaymentDetails>> GetPaymentDetails(int id)
@@ -107,25 +126,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //        return CreatedAtAction("GetPaymentDetails", new { id = paymentDetails.PaymentDetailsId }, paymentDetails);
         //    }
 
-        //    // DELETE: api/PaymentDetails/5
-        //    [HttpDelete("{id}")]
-        //    public async Task<IActionResult> DeletePaymentDetails(int id)
-        //    {
-        //        var paymentDetails = await _context.PaymentDetails.FindAsync(id);
-        //        if (paymentDetails == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        _context.PaymentDetails.Remove(paymentDetails);
-        //        await _context.SaveChangesAsync();
-
-        //        return NoContent();
-        //    }
 
         //    private bool PaymentDetailsExists(int id)
         //    {
         //        return _context.PaymentDetails.Any(e => e.PaymentDetailsId == id);
         //    }
-        }
     }
+}

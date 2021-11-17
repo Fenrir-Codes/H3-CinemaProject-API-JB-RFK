@@ -1,5 +1,4 @@
 ﻿using H3_CinemaProjektAPI_JB_RFK.DataBase;
-using H3_CinemaProjektAPI_JB_RFK.DTO;
 using H3_CinemaProjektAPI_JB_RFK.Interfaces;
 using H3_CinemaProjektAPI_JB_RFK.Model;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +16,17 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         public MovieRepositories(DataBaseContext _context)
         {
             context = _context;
+        }
+
+        public async Task<Movie> DeleteMovie(int Id)
+        {
+            var movie = await context.Movie.FindAsync(Id);
+            if (movie != null)
+            {
+                context.Movie.Remove(movie);
+                await context.SaveChangesAsync();
+            }
+            return movie;
         }
 
         //public async Task<List<MovieResponse>> GetAllMovies()

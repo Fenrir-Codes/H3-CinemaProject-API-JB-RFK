@@ -10,5 +10,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
     {
         Task<PaymentDetails> GetPayment(int Id);
         Task<List<PaymentDetails>> GetAllPaymentDetails();
+
+        Task<PaymentDetails> DeletePayment(int Id);
     }
 }

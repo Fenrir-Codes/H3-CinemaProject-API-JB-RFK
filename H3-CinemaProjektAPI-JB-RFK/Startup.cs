@@ -36,7 +36,7 @@ namespace H3_CinemaProjektAPI_JB_RFK
                 options.AddPolicy("CORS",
                 builder =>
                 {
-                    builder.AllowAnyOrigin() 
+                    builder.AllowAnyOrigin()
                            .AllowAnyHeader()
                            .AllowAnyMethod();
                 });
@@ -86,10 +86,17 @@ namespace H3_CinemaProjektAPI_JB_RFK
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            try
             {
-                endpoints.MapControllers();
-            });
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
+            }
+            catch (System.Exception exp)
+            {
+                throw;
+            }
         }
     }
 }

@@ -20,6 +20,17 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        public async Task<Profile> DeleteProfile(int Id)
+        {
+            var profile = await context.Profile.FindAsync(Id);
+            if (profile != null)
+            {
+                context.Profile.Remove(profile);
+                await context.SaveChangesAsync();
+            }
+            return profile;
+        }
+
         #region getting all profiles function
         //getting the profiles (all)
         public async Task<List<Profile>> GetProfiles()

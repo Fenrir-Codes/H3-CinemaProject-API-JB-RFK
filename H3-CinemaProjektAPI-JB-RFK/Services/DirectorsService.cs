@@ -16,6 +16,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             context = _context;
         }
 
+        public async Task<Directors> CreateDirector(Directors directors)
+        {
+            return await context.CreateDirector(directors);
+        }
+
         public async Task<bool> DeleteDirector(int Id)
         {
             var temp = await context.DeleteDirector(Id);

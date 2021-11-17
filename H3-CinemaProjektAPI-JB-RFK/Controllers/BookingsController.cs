@@ -17,20 +17,42 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
     {
       //  private readonly DataBaseContext _context;
 
-        private readonly IBookingService bookingContext;
+        private readonly IBookingService _context;
 
         public BookingsController(IBookingService context)
         {
-            bookingContext = context;
+            _context = context;
 
         }
 
         // GET: api/Bookings
-        //    [HttpGet]
-        //    public async Task<ActionResult<IEnumerable<Booking>>> GetBooking()
-        //    {
-        //        return await _context.Booking.ToListAsync();
-        //    }
+        [HttpGet]
+        public async Task<ActionResult<Booking>> GetBooking(int Id)
+        {
+            return Ok(await _context.GetBooking(Id));
+        }
+
+        [HttpGet("GetAllBookings")]
+        public async Task<ActionResult> GetAllBookings()
+        {
+            try
+            {
+                List<Booking> bookingList = await _context.GetAllBookings();
+                if (bookingList == null)
+                {
+                    return Problem("Der kom ikke noget");
+                }
+                if (bookingList.Count == 0)
+                {
+                    return NoContent(); // 204
+                }
+                return Ok(bookingList);
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
 
         //    // GET: api/Bookings/5
         //    [HttpGet("{id}")]

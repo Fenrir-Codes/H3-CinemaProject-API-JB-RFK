@@ -16,6 +16,12 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             context = _context;
         }
 
+        public async Task<bool> DeleteHall(int Id)
+        {
+            var temp = await context.DeleteHall(Id);
+            return temp != null;
+        }
+
         public async Task<List<Hall>> GetAllHalls()
         {
             return await context.GetAllHalls();
