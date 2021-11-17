@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Migrations
 {
-    public partial class Initial : Migration
+    public partial class secondMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,8 +27,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                 {
                     ProfileId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Firstname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Lastname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -79,7 +79,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                     PaymentId = table.Column<int>(type: "int", nullable: false),
                     SeatNumberId = table.Column<int>(type: "int", nullable: false),
                     HallId = table.Column<int>(type: "int", nullable: false),
-                    DiscountCoupon = table.Column<bool>(type: "bit", nullable: false),
+                    DiscountCoupon = table.Column<bool>(type: "bit", nullable: false, defaultValue:0),
                     NumberOfSeats = table.Column<int>(type: "int", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TimeStamp = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -131,7 +131,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TransactionId = table.Column<int>(type: "int", nullable: false),
                     PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Paid = table.Column<bool>(type: "bit", nullable: false),
+                    Paid = table.Column<bool>(type: "bit", nullable: false, defaultValue:0),
                     CardNumber = table.Column<int>(type: "int", nullable: false),
                     BookingId = table.Column<int>(type: "int", nullable: true)
                 },
