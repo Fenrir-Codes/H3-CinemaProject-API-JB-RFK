@@ -10,34 +10,34 @@ using System.Threading.Tasks;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 {
-    public class BookingRepositories :IBookingRepositories
+    public class BookingRepositories : IBookingRepositories
     {
-        private readonly DataBaseContext context;
+        //private readonly DataBaseContext context;
 
-        public BookingRepositories(DataBaseContext _context)
-        {
-            context = _context;
-        }
+        //public BookingRepositories(DataBaseContext _context)
+        //{
+        //    context = _context;
+        //}
 
-        //getting the booking (all)
-        public async Task<ActionResult<IEnumerable<Booking>>> GetBooking()
-        {
-            return await context.Booking.ToListAsync();
-        }
+        ////getting the booking (all)
+        //public async Task<ActionResult<IEnumerable<Booking>>> GetBooking()
+        //{
+        //    return await context.Booking.ToListAsync();
+        //}
 
-        //getting the booking with id
-        public async Task<List<Booking>> GetBooking(int id)
-        {
-            return await context.Booking.Where(i => i.BookingId == id).ToListAsync();
-        }
+        ////getting the booking with id
+        //public async Task<List<Booking>> GetBooking(int id)
+        //{
+        //    return await context.Booking.Where(i => i.BookingId == id).ToListAsync();
+        //}
 
-        //create booking data
-        public async Task<Booking> CreateBooking(Booking data)
-        {
-            context.Booking.Add(data);
-            await context.SaveChangesAsync();
-            return data;
-        }
+        ////create booking data
+        //public async Task<Booking> CreateBooking(Booking data)
+        //{
+        //    context.Booking.Add(data);
+        //    await context.SaveChangesAsync();
+        //    return data;
+        //}
 
 
     }

@@ -61,6 +61,7 @@ namespace H3_CinemaProjektAPI_JB_RFK
             services.AddScoped<ISeatNumberRepositories, SeatNumberRepositories>();
 
             services.AddControllers();
+            //services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "H3_CinemaProjektAPI_JB_RFK", Version = "v1" });
