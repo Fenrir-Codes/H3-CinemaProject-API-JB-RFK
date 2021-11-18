@@ -18,6 +18,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        public async Task<Movie> CreateMovie(Movie movie)
+        {
+            context.Movie.Add(movie);
+            await context.SaveChangesAsync();
+            return movie;
+        }
+
         public async Task<Movie> DeleteMovie(int Id)
         {
             var movie = await context.Movie.FindAsync(Id);

@@ -22,16 +22,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
-        #region get seatnumber (id)
         // GET: api/SeatNumbers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SeatNumber>>> GetSeatNumber(int Id)
         {
             return Ok(await _context.GetSeatNumber(Id));
         }
-        #endregion
 
-        #region get all seat numbers
         [HttpGet("GetAllSeatNumbers")]
         public async Task<ActionResult> GetAllSeatNumbers()
         {
@@ -53,9 +50,18 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
-        #endregion
 
-        #region delete seatnumber (id)
+        // POST: api/SeatNumbers
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<SeatNumber>> PostSeatNumber(SeatNumber seatNumber)
+        {
+            return await _context.CreateSeat(seatNumber);
+            //await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetSeatNumber", new { id = seatNumber.SeatNumberId }, seatNumber);
+        }
+
         // DELETE: api/SeatNumbers/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSeatNumber(int id)
@@ -74,11 +80,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
-        #endregion
 
-
-
-        #region code commented out 
         //        // GET: api/SeatNumbers/5
         //        [HttpGet("{id}")]
         //        public async Task<ActionResult<SeatNumber>> GetSeatNumber(int id)
@@ -124,24 +126,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //            return NoContent();
         //        }
 
-        //        // POST: api/SeatNumbers
-        //        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //        [HttpPost]
-        //        public async Task<ActionResult<SeatNumber>> PostSeatNumber(SeatNumber seatNumber)
-        //        {
-        //            _context.SeatNumber.Add(seatNumber);
-        //            await _context.SaveChangesAsync();
-
-        //            return CreatedAtAction("GetSeatNumber", new { id = seatNumber.SeatNumberId }, seatNumber);
-        //        }
-
 
         //        private bool SeatNumberExists(int id)
         //        {
         //            return _context.SeatNumber.Any(e => e.SeatNumberId == id);
         //        }
-        #endregion
-
-
     }
 }

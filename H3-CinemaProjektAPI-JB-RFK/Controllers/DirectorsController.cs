@@ -60,10 +60,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         [HttpPost]
         public async Task<ActionResult<Directors>> CreateDirector(Directors directors)
         {
-            await _context.CreateDirector(directors);
+            return await _context.CreateDirector(directors);
             //await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
+            //return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
         }
         #endregion
 

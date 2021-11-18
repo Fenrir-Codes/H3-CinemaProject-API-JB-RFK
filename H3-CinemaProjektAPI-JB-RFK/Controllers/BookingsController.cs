@@ -25,16 +25,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         }
 
-        #region get booking (id)
         // GET: api/Bookings
         [HttpGet]
         public async Task<ActionResult<Booking>> GetBooking(int Id)
         {
             return Ok(await _context.GetBooking(Id));
         }
-        #endregion
 
-        #region get all bookings
         [HttpGet("GetAllBookings")]
         public async Task<ActionResult> GetAllBookings()
         {
@@ -56,11 +53,37 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
-        #endregion
 
+        // POST: api/Bookings
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Booking>> CreateBooking(Booking booking)
+        {
+            return await _context.CreateBooking(booking);
+            //await _context.SaveChangesAsync();
 
+            //return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
+        }
 
-        #region code commented out
+        // DELETE: api/Bookings/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteBooking(int id)
+        {
+            try
+            {
+                bool result = await _context.DeleteBooking(id);
+                if (!result)
+                {
+                    return Problem("Booking was not deleted, something went wrong");
+                }
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
+
         //    // GET: api/Bookings/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<Booking>> GetBooking(int id)
@@ -106,37 +129,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //        return NoContent();
         //    }
 
-        //    // POST: api/Bookings
-        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //    [HttpPost]
-        //    public async Task<ActionResult<Booking>> PostBooking(Booking booking)
-        //    {
-        //        _context.Booking.Add(booking);
-        //        await _context.SaveChangesAsync();
 
-        //        return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
-        //    }
-
-        //    // DELETE: api/Bookings/5
-        //    [HttpDelete("{id}")]
-        //    public async Task<IActionResult> DeleteBooking(int id)
-        //    {
-        //        var booking = await _context.Booking.FindAsync(id);
-        //        if (booking == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        _context.Booking.Remove(booking);
-        //        await _context.SaveChangesAsync();
-
-        //        return NoContent();
-        //    }
 
         //    private bool BookingExists(int id)
         //    {
         //        return _context.Booking.Any(e => e.BookingId == id);
         //    }
-        #endregion
     }
 }
