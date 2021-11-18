@@ -116,10 +116,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DirectorId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DirectorsId")
+                    b.Property<int>("DirectorsId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Duration")
@@ -255,7 +252,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                 {
                     b.HasOne("H3_CinemaProjektAPI_JB_RFK.Model.Directors", null)
                         .WithMany("Movies")
-                        .HasForeignKey("DirectorsId");
+                        .HasForeignKey("DirectorsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("H3_CinemaProjektAPI_JB_RFK.Model.PaymentDetails", b =>
