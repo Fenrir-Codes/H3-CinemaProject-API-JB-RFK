@@ -91,6 +91,23 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
+        #region create profile
+        [HttpPost]
+        public async Task<ActionResult<Profile>> CreateProfile(Profile data)
+        {
+            try
+            {
+                return await _context.CreateProfile(data) ;
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(400, ex.Message);
+            }
+
+        }
+        #endregion
+
         #region delete profile
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProfile(int Id)

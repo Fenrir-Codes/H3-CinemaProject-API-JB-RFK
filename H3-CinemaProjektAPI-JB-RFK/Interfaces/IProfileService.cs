@@ -18,6 +18,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
         //get one profile with id
         Task<Profile> GetProfile(int id);
 
+        Task<Profile> CreateProfile(Profile data);
+
         Task<bool> DeleteProfile(int Id);
     }
 }
