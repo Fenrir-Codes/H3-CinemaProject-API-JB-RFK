@@ -9,8 +9,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
     {
         public int HallId { get; set; }
         public int SeatNumberId { get; set; }
-        public string HallGreat { get; set; }
-        public string HallSmall { get; set; }
+        public bool isGreatHAll { get; set; }
+        public bool isSmallHall { get; set; }
 
         /* EF Relations */
         public ICollection<SeatNumber> SeatNumbers { get; set; }
