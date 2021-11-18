@@ -18,6 +18,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        public async Task<PaymentDetails> CreatePayment(PaymentDetails paymentDetails)
+        {
+            context.PaymentDetails.Add(paymentDetails);
+            await context.SaveChangesAsync();
+            return paymentDetails;
+        }
+
         public async Task<PaymentDetails> DeletePayment(int Id)
         {
             var payment = await context.PaymentDetails.FindAsync(Id);

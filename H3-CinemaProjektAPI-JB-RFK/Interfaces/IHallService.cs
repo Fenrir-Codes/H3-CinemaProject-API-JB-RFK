@@ -11,6 +11,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
         Task<Hall> GetHall(int Id);
         Task<List<Hall>> GetAllHalls();
         Task<bool> DeleteHall(int Id);
+        Task<Hall> CreateHall(Hall hall);
 
     }
 }

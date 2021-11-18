@@ -41,14 +41,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             return await context.Booking.FindAsync(Id);
         }
 
-
-        ////create booking data
-        //public async Task<Booking> CreateBooking(Booking data)
-        //{
-        //    context.Booking.Add(data);
-        //    await context.SaveChangesAsync();
-        //    return data;
-        //}
+        //create booking data
+        public async Task<Booking> CreateBooking(Booking booking)
+        {
+            context.Booking.Add(booking);
+            await context.SaveChangesAsync();
+            return booking;
+        }
 
 
     }

@@ -51,6 +51,17 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
+        // POST: api/SeatNumbers
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<SeatNumber>> PostSeatNumber(SeatNumber seatNumber)
+        {
+            return await _context.CreateSeat(seatNumber);
+            //await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetSeatNumber", new { id = seatNumber.SeatNumberId }, seatNumber);
+        }
+
         // DELETE: api/SeatNumbers/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSeatNumber(int id)
@@ -113,17 +124,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //            }
 
         //            return NoContent();
-        //        }
-
-        //        // POST: api/SeatNumbers
-        //        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //        [HttpPost]
-        //        public async Task<ActionResult<SeatNumber>> PostSeatNumber(SeatNumber seatNumber)
-        //        {
-        //            _context.SeatNumber.Add(seatNumber);
-        //            await _context.SaveChangesAsync();
-
-        //            return CreatedAtAction("GetSeatNumber", new { id = seatNumber.SeatNumberId }, seatNumber);
         //        }
 
 

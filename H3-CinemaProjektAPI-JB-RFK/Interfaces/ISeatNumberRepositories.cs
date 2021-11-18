@@ -10,7 +10,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
     {
         Task<SeatNumber> GetSeatNumber(int Id);
         Task<List<SeatNumber>> GetAllSeatNumbers();
-
         Task<SeatNumber> DeleteSeat(int Id);
+        Task<SeatNumber> CreateSeat(SeatNumber seatNumber);
     }
 }

@@ -51,6 +51,17 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
+        // POST: api/Halls
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Hall>> PostHall(Hall hall)
+        {
+            return await _context.CreateHall(hall);
+            //await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetHall", new { id = hall.HallId }, hall);
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteHall(int id)
         {
@@ -114,16 +125,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //        return NoContent();
         //    }
 
-        //    // POST: api/Halls
-        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //    [HttpPost]
-        //    public async Task<ActionResult<Hall>> PostHall(Hall hall)
-        //    {
-        //        _context.Hall.Add(hall);
-        //        await _context.SaveChangesAsync();
-
-        //        return CreatedAtAction("GetHall", new { id = hall.HallId }, hall);
-        //    }
 
 
         //    private bool HallExists(int id)

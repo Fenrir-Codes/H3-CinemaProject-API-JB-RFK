@@ -51,6 +51,17 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
+        // POST: api/PaymentDetails
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<PaymentDetails>> PostPaymentDetails(PaymentDetails paymentDetails)
+        {
+            return await _context.CreatePayment(paymentDetails);
+            //await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetPaymentDetails", new { id = paymentDetails.PaymentDetailsId }, paymentDetails);
+        }
+
         // DELETE: api/PaymentDetails/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePaymentDetails(int id)
@@ -113,17 +124,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //        }
 
         //        return NoContent();
-        //    }
-
-        //    // POST: api/PaymentDetails
-        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //    [HttpPost]
-        //    public async Task<ActionResult<PaymentDetails>> PostPaymentDetails(PaymentDetails paymentDetails)
-        //    {
-        //        _context.PaymentDetails.Add(paymentDetails);
-        //        await _context.SaveChangesAsync();
-
-        //        return CreatedAtAction("GetPaymentDetails", new { id = paymentDetails.PaymentDetailsId }, paymentDetails);
         //    }
 
 

@@ -54,6 +54,17 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
+        // POST: api/Bookings
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Booking>> CreateBooking(Booking booking)
+        {
+            return await _context.CreateBooking(booking);
+            //await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
+        }
+
         // DELETE: api/Bookings/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteBooking(int id)
@@ -118,16 +129,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //        return NoContent();
         //    }
 
-        //    // POST: api/Bookings
-        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //    [HttpPost]
-        //    public async Task<ActionResult<Booking>> PostBooking(Booking booking)
-        //    {
-        //        _context.Booking.Add(booking);
-        //        await _context.SaveChangesAsync();
-
-        //        return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
-        //    }
 
 
         //    private bool BookingExists(int id)

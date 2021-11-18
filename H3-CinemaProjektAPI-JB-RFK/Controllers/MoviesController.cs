@@ -53,6 +53,17 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         }
 
+        // POST: api/Movies
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Movie>> PostMovie(Movie movie)
+        {
+            return await _context.CreateMovie(movie);
+            //await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetMovie", new { id = movie.MovieId }, movie);
+        }
+
         // DELETE: api/Movies/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteMovie(int id)
@@ -118,16 +129,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //        return NoContent();
         //    }
 
-        //    // POST: api/Movies
-        //    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //    [HttpPost]
-        //    public async Task<ActionResult<Movie>> PostMovie(Movie movie)
-        //    {
-        //        _context.Movie.Add(movie);
-        //        await _context.SaveChangesAsync();
-
-        //        return CreatedAtAction("GetMovie", new { id = movie.MovieId }, movie);
-        //    }
 
 
         //    private bool MovieExists(int id)

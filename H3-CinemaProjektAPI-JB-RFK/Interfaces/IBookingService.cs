@@ -11,6 +11,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
         Task<Booking> GetBooking(int Id);
         Task<List<Booking>> GetAllBookings();
         Task<bool> DeleteBooking(int Id);
+        Task<Booking> CreateBooking(Booking booking);
+
 
     }
 }

@@ -16,6 +16,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             context = _context;
         }
 
+        public async Task<Booking> CreateBooking(Booking booking)
+        {
+            return await context.CreateBooking(booking);
+        }
+
         public async Task<bool> DeleteBooking(int Id)
         {
             var temp = await context.DeleteBooking(Id);

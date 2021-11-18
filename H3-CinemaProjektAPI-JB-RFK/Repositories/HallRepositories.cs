@@ -18,6 +18,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        public async Task<Hall> CreateHall(Hall hall)
+        {
+            context.Hall.Add(hall);
+            await context.SaveChangesAsync();
+            return hall;
+        }
+
         public async Task<Hall> DeleteHall(int Id)
         {
             var hall = context.Hall.Find(Id);
