@@ -54,6 +54,25 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
+        // DELETE: api/Bookings/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteBooking(int id)
+        {
+            try
+            {
+                bool result = await _context.DeleteBooking(id);
+                if (!result)
+                {
+                    return Problem("Booking was not deleted, something went wrong");
+                }
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
+
         //    // GET: api/Bookings/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<Booking>> GetBooking(int id)
@@ -110,21 +129,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //        return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
         //    }
 
-        //    // DELETE: api/Bookings/5
-        //    [HttpDelete("{id}")]
-        //    public async Task<IActionResult> DeleteBooking(int id)
-        //    {
-        //        var booking = await _context.Booking.FindAsync(id);
-        //        if (booking == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        _context.Booking.Remove(booking);
-        //        await _context.SaveChangesAsync();
-
-        //        return NoContent();
-        //    }
 
         //    private bool BookingExists(int id)
         //    {
