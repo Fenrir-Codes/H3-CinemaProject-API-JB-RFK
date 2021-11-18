@@ -13,7 +13,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
         public int PaymentId { get; set; }
         public int SeatNumberId { get; set; }
         public int HallId { get; set; }
-        public bool DiscountCoupon { get; set; }
+        public bool? DiscountCoupon { get; set; } = null;
         public int NumberOfSeats { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime TimeStamp { get; set; }

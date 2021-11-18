@@ -46,15 +46,14 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                 {
                     MovieId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DirectorId = table.Column<int>(type: "int", nullable: false),
+                    DirectorsId = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Language = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Duration = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DirectorsId = table.Column<int>(type: "int", nullable: true)
+                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,7 +63,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                         column: x => x.DirectorsId,
                         principalTable: "Directors",
                         principalColumn: "DirectorsId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -78,7 +77,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                     PaymentId = table.Column<int>(type: "int", nullable: false),
                     SeatNumberId = table.Column<int>(type: "int", nullable: false),
                     HallId = table.Column<int>(type: "int", nullable: false),
-                    DiscountCoupon = table.Column<bool>(type: "bit", nullable: false, defaultValue:0),
+                    DiscountCoupon = table.Column<bool>(type: "bit", nullable: true),
                     NumberOfSeats = table.Column<int>(type: "int", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TimeStamp = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -107,8 +106,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                     HallId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SeatNumberId = table.Column<int>(type: "int", nullable: false),
-                    HallGreat = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HallSmall = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HAllName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BookingId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -129,9 +127,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Migrations
                     PaymentDetailsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TransactionId = table.Column<int>(type: "int", nullable: false),
-                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue:0),
+                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CardType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Paid = table.Column<bool>(type: "bit", nullable: false),
-                    CardNumber = table.Column<int>(type: "int", nullable: false),
                     BookingId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
