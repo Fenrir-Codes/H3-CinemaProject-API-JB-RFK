@@ -13,6 +13,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
         Task<List<Movie>> GetAllMovies();
         Task<bool> DeleteMovie(int Id);
         Task<Movie> CreateMovie(Movie movie);
+        Task<List<Movie>> GetMovieTitle(string title);
+
 
 
 

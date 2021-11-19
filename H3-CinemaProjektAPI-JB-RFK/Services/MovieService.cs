@@ -38,5 +38,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         {
             return await context.GetMovie(Id);
         }
+
+        public async Task<List<Movie>> GetMovieTitle(string title)
+        {
+            return await context.GetMovieTitle(title);
+        }
     }
 }

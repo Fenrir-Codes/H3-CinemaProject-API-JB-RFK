@@ -68,7 +68,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             {
                 var update = new Profile();
                 {
-                    findProfile.ProfileId = data.ProfileId;
+                    //findProfile.ProfileId = data.ProfileId;
                     findProfile.Firstname = data.Firstname;
                     findProfile.Lastname = data.Lastname;
                     findProfile.Address = data.Address;

@@ -61,5 +61,12 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         {
             return await context.Movie.FindAsync(Id);
         }
+
+        public async Task<List<Movie>> GetMovieTitle(string title)
+        {
+            List<Movie> movieTitle = await context.Movie.Include(i => i.Bookings).ToListAsync();
+            return movieTitle;
+
+        }
     }
 }
