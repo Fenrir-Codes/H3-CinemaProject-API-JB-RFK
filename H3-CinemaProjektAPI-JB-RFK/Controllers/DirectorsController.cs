@@ -54,7 +54,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
-        #region director by name
+        #region director by firstName
         [HttpGet("ByName/{name}")]
         public async Task<ActionResult> ByFirstName(string name)
         {
