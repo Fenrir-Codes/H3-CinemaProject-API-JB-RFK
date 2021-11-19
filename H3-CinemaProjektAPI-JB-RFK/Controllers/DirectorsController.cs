@@ -21,17 +21,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         {
             _context = context;
         }
-<<<<<<< Updated upstream
-        #region Get director with id
-        // GET: api/Directors
-        [HttpGet]
-        public async Task<ActionResult> GetDirector(int Id)
-        {
-            return Ok(await _context.GetDirector(Id));
-        }
-        #endregion
-=======
->>>>>>> Stashed changes
 
         #region Get all directors
         [HttpGet("GetAllDirectors")]

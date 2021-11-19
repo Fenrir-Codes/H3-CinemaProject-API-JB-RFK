@@ -108,8 +108,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
-<<<<<<< Updated upstream
-=======
         #region update profile
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateProfile(int id, Profile data)
@@ -132,7 +130,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
->>>>>>> Stashed changes
         #region delete profile
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProfile(int Id)

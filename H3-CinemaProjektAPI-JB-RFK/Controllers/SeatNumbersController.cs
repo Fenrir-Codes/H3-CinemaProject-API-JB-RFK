@@ -22,17 +22,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
-<<<<<<< Updated upstream
-        // GET: api/SeatNumbers
-        [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<SeatNumber>>> GetSeatNumber(int Id)
-        {
-            return Ok(await _context.GetSeatNumber(Id));
-        }
-
-=======
         #region get all seatnumbers
->>>>>>> Stashed changes
         [HttpGet("GetAllSeatNumbers")]
         public async Task<ActionResult> GetAllSeatNumbers()
         {

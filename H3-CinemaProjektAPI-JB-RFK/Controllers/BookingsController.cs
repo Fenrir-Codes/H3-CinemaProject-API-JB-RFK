@@ -25,17 +25,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         }
 
-<<<<<<< Updated upstream
-        // GET: api/Bookings
-        [HttpGet]
-        public async Task<ActionResult<Booking>> GetBooking(int Id)
-        {
-            return Ok(await _context.GetBooking(Id));
-        }
-
-=======
         #region get all bookings
->>>>>>> Stashed changes
         [HttpGet("GetAllBookings")]
         public async Task<ActionResult> GetAllBookings()
         {
@@ -57,9 +47,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
-<<<<<<< Updated upstream
-=======
         #region get booking (id)
         // GET: api/Bookings
         [HttpGet("{id}")]
@@ -70,7 +59,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         #endregion
 
         #region create booking
->>>>>>> Stashed changes
         // POST: api/Bookings
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -81,9 +69,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
             //return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
         }
+        #endregion
 
-<<<<<<< Updated upstream
-=======
         #region update booking
 
         [HttpPut("{id}")]
@@ -108,7 +95,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         #endregion
 
         #region delete booking
->>>>>>> Stashed changes
         // DELETE: api/Bookings/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteBooking(int id)
@@ -127,7 +113,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
+
+        #region commented out code
         //    // GET: api/Bookings/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<Booking>> GetBooking(int id)
@@ -179,5 +168,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //    {
         //        return _context.Booking.Any(e => e.BookingId == id);
         //    }
+        #endregion
     }
 }

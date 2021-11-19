@@ -22,17 +22,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
-<<<<<<< Updated upstream
-        // GET: api/Movies
-        [HttpGet]
-        public async Task<ActionResult> GetMovie(int Id)
-        {
-            return Ok(await _context.GetMovie(Id));
-        }
-
-=======
         #region get all movies
->>>>>>> Stashed changes
         [HttpGet("AllMovies")]
         public async Task<ActionResult> GetAllMovies()
         {

@@ -22,17 +22,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
-<<<<<<< Updated upstream
-        // GET: api/Halls
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Hall>> GetHall(int Id)
-        {
-            return Ok(await _context.GetHall(Id));
-        }
-
-=======
         #region get all halls
->>>>>>> Stashed changes
         [HttpGet("GetAllHalls")]
         public async Task<ActionResult> GetAllHalls()
         {

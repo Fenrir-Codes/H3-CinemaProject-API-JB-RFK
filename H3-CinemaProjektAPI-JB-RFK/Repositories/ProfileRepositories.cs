@@ -20,6 +20,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        #region delete profile
         public async Task<Profile> DeleteProfile(int Id)
         {
             var profile = await context.Profile.FindAsync(Id);
@@ -30,6 +31,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             }
             return profile;
         }
+        #endregion
 
         #region getting all profiles function
         //getting the profiles (all)
@@ -57,8 +59,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
-<<<<<<< Updated upstream
-=======
         #region update profile
         public async Task<Profile> UpdateProfile(int id, Profile data)
         {
@@ -96,7 +96,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
->>>>>>> Stashed changes
         #region login function
         //Login
         public async Task<ProfileResponse> Login(string mail, string password)
