@@ -20,6 +20,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
 
         Task<Profile> CreateProfile(Profile data);
 
+        Task<Profile> UpdateProfile(int id, Profile data);
+
         Task<bool> DeleteProfile(int Id);
     }
 }
