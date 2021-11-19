@@ -18,6 +18,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        public async Task<Directors> ByLastName(string lastName)
+        {
+            return await context.Directors.Where(n => n.LastName == lastName).FirstOrDefaultAsync();
+        }
+
+        public async Task<Directors> ByFirstName(string name)
+        {
+            return await context.Directors.Where(fname => fname.FirstName == name).FirstOrDefaultAsync();
+        }
+
         public async Task<Directors> CreateDirector(Directors directors)
         {
             context.Directors.Add(directors);

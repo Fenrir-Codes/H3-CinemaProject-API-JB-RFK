@@ -16,6 +16,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             context = _context;
         }
 
+        public async Task<Directors> ByLastName(string lastName)
+        {
+            return await context.ByLastName(lastName);
+        }
+
+        public async Task<Directors> ByFirstName(string name)
+        {
+            return await context.ByFirstName(name);
+        }
+
         public async Task<Directors> CreateDirector(Directors directors)
         {
             return await context.CreateDirector(directors);

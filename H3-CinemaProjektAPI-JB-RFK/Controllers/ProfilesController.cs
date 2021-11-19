@@ -91,6 +91,22 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
+        #region profile by name
+        [HttpGet("ProfileByName/{name}")]
+        public  async Task<ActionResult<Profile>> ProfileByName(string name)
+        {
+            try
+            {
+                return Ok(await _context.ProfileByName(name));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+            
+        }
+        #endregion
+
         #region create profile
         [HttpPost]
         public async Task<ActionResult<Profile>> CreateProfile(Profile data)
