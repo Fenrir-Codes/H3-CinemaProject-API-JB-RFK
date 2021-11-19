@@ -8,7 +8,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
     public class Movie
     {
         public int MovieId { get; set; }
-        public int DirectorId { get; set; }
+        public int DirectorsId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Language { get; set; }

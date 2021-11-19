@@ -24,7 +24,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
 <<<<<<< Updated upstream
         // GET: api/Halls
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Hall>> GetHall(int Id)
         {
             return Ok(await _context.GetHall(Id));
