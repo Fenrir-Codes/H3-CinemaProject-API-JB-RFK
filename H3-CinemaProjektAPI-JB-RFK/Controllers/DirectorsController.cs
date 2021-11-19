@@ -70,7 +70,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         #region update director
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateProfile(int id, Directors data)
+        public async Task<ActionResult> UpdateDirector(int id, Directors data)
         {
             if (id != data.DirectorsId)
             {
