@@ -9,8 +9,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
     public interface IDirectorsRepositories
     {
         Task<Directors> GetDirector(int Id);
+
         Task<List<Directors>> GetAllDirectors();
+
         Task<Directors> DeleteDirector(int Id);
+
         Task<Directors> CreateDirector(Directors directors);
+
+        Task<Directors> UpdateDirector(int id, Directors data);
     }
 }

@@ -21,6 +21,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         {
             _context = context;
         }
+<<<<<<< Updated upstream
         #region Get director with id
         // GET: api/Directors
         [HttpGet]
@@ -29,6 +30,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             return Ok(await _context.GetDirector(Id));
         }
         #endregion
+=======
+>>>>>>> Stashed changes
 
         #region Get all directors
         [HttpGet("GetAllDirectors")]
@@ -54,6 +57,15 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
+        #region Get director with id
+        // GET: api/Directors
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetDirector(int Id)
+        {
+            return Ok(await _context.GetDirector(Id));
+        }
+        #endregion
+
         #region create directors
         // POST: api/Directors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -64,6 +76,28 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             //await _context.SaveChangesAsync();
 
             //return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
+        }
+        #endregion
+
+        #region update director
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateProfile(int id, Directors data)
+        {
+            if (id != data.DirectorsId)
+            {
+                return BadRequest("ID mismatch!");
+            }
+
+            try
+            {
+                await _context.UpdateDirector(id, data);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+
         }
         #endregion
 

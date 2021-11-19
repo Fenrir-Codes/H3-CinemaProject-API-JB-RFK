@@ -108,6 +108,31 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
+<<<<<<< Updated upstream
+=======
+        #region update profile
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateProfile(int id, Profile data)
+        {
+            if (id != data.ProfileId)
+            {
+                return BadRequest("ID mismatch!");
+            }
+
+            try
+            {
+                await _context.UpdateProfile(id, data);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+
+        }
+        #endregion
+
+>>>>>>> Stashed changes
         #region delete profile
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProfile(int Id)

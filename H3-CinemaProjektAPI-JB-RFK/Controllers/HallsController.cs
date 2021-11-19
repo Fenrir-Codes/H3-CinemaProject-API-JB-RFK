@@ -22,6 +22,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
+<<<<<<< Updated upstream
         // GET: api/Halls
         [HttpGet]
         public async Task<ActionResult<Hall>> GetHall(int Id)
@@ -29,6 +30,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             return Ok(await _context.GetHall(Id));
         }
 
+=======
+        #region get all halls
+>>>>>>> Stashed changes
         [HttpGet("GetAllHalls")]
         public async Task<ActionResult> GetAllHalls()
         {
@@ -50,7 +54,18 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
+        #region get hall (id)
+        // GET: api/Halls
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Hall>> GetHall(int Id)
+        {
+            return Ok(await _context.GetHall(Id));
+        }
+        #endregion
+
+        #region create hall
         // POST: api/Halls
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -61,7 +76,31 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
             //return CreatedAtAction("GetHall", new { id = hall.HallId }, hall);
         }
+        #endregion
 
+        #region update Hall
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateHall(int id, Hall data)
+        {
+            if (id != data.HallId)
+            {
+                return BadRequest("ID mismatch!");
+            }
+
+            try
+            {
+                await _context.UpdateHall(id, data);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+
+        }
+        #endregion
+
+        #region delete hall (id)
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteHall(int id)
         {
@@ -79,7 +118,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
+        #region commented out code
         //    // GET: api/Halls/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<Hall>> GetHall(int id)
@@ -131,5 +172,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //    {
         //        return _context.Hall.Any(e => e.HallId == id);
         //    }
+        #endregion
     }
 }

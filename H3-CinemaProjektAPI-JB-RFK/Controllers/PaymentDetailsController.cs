@@ -22,6 +22,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
+<<<<<<< Updated upstream
         // GET: api/PaymentDetails
         [HttpGet]
         public async Task<ActionResult> GetPayment(int Id)
@@ -29,6 +30,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             return Ok(await _context.GetPayment(Id));
         }
 
+=======
+        #region get all payment details
+>>>>>>> Stashed changes
         [HttpGet("AllPayment")]
         public async Task<ActionResult> GetAllPayment()
         {
@@ -50,7 +54,18 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
+        #region get payment detail (id)
+        // GET: api/PaymentDetails
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetPayment(int Id)
+        {
+            return Ok(await _context.GetPayment(Id));
+        }
+        #endregion
+
+        #region create details
         // POST: api/PaymentDetails
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -61,7 +76,31 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
             //return CreatedAtAction("GetPaymentDetails", new { id = paymentDetails.PaymentDetailsId }, paymentDetails);
         }
+        #endregion
 
+        #region update payment details
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdatePaymentDetails(int id, PaymentDetails data)
+        {
+            if (id != data.PaymentDetailsId)
+            {
+                return BadRequest("ID mismatch!");
+            }
+
+            try
+            {
+                await _context.UpdatePaymentDetails(id, data);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+
+        }
+        #endregion
+
+        #region delete payment detail (id)
         // DELETE: api/PaymentDetails/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePaymentDetails(int id)
@@ -80,7 +119,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
+
+        #region commented out code
         //    // GET: api/PaymentDetails/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<PaymentDetails>> GetPaymentDetails(int id)
@@ -131,5 +173,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //    {
         //        return _context.PaymentDetails.Any(e => e.PaymentDetailsId == id);
         //    }
+        #endregion
     }
 }

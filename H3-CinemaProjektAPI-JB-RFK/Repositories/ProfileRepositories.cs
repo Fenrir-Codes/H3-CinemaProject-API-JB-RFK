@@ -57,6 +57,46 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
+<<<<<<< Updated upstream
+=======
+        #region update profile
+        public async Task<Profile> UpdateProfile(int id, Profile data)
+        {
+            var findProfile = await context.Profile.Where(p => p.ProfileId == id).FirstOrDefaultAsync();
+            if (findProfile != null)
+            {
+                findProfile.ProfileId = data.ProfileId;
+                findProfile.Firstname = data.Firstname;
+                findProfile.Lastname = data.Lastname;
+                findProfile.Address = data.Address;
+                findProfile.Email = data.Email;
+                findProfile.Phone = data.Phone;
+
+                context.Entry(findProfile).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+                return findProfile;
+            }
+            return null;
+
+            #region outcommented
+            //var update = new Profile();
+            //{
+            //  //  update.ProfileId = data.ProfileId;
+            //    update.Firstname = data.Firstname;
+            //    update.Lastname = data.Lastname;
+            //    update.Address = data.Address;
+            //    update.Email = data.Email;
+            //    update.Phone = data.Phone;
+            //}
+            //context.Entry(findProfile).State = EntityState.Modified; // den her virker ikke
+            //context.Profile.Add(update);
+            //await context.SaveChangesAsync();
+            //return update;
+            #endregion
+        }
+        #endregion
+
+>>>>>>> Stashed changes
         #region login function
         //Login
         public async Task<ProfileResponse> Login(string mail, string password)

@@ -18,13 +18,35 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        #region create director
         public async Task<Directors> CreateDirector(Directors directors)
         {
             context.Directors.Add(directors);
             await context.SaveChangesAsync();
             return directors;
         }
+        #endregion
 
+        #region update director
+        public async Task<Directors> UpdateDirector(int id, Directors data)
+        {
+            var findDirector = await context.Directors.Where(d => d.DirectorsId == id).FirstOrDefaultAsync();
+            if (findDirector != null)
+            {
+                findDirector.DirectorsId = data.DirectorsId;
+                findDirector.FirstName = data.FirstName;
+                findDirector.LastName = data.LastName;
+
+                context.Entry(findDirector).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+                return findDirector;
+            }
+            return null;
+
+        }
+        #endregion
+
+        #region delete director (id)
         public async Task<Directors> DeleteDirector(int Id)
         {
             var director = context.Directors.Find(Id);
@@ -35,16 +57,21 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             }
             return director;
         }
+        #endregion
 
+        #region get all directors
         public async Task<List<Directors>> GetAllDirectors()
         {
             List<Directors> directorList = await context.Directors.ToListAsync();
             return directorList;
         }
+        #endregion
 
+        #region get director (id)
         public async Task<Directors> GetDirector(int Id)
         {
             return await context.Directors.FindAsync(Id);
         }
+        #endregion
     }
 }

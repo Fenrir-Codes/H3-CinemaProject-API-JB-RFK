@@ -25,6 +25,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         }
 
+<<<<<<< Updated upstream
         // GET: api/Bookings
         [HttpGet]
         public async Task<ActionResult<Booking>> GetBooking(int Id)
@@ -32,6 +33,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             return Ok(await _context.GetBooking(Id));
         }
 
+=======
+        #region get all bookings
+>>>>>>> Stashed changes
         [HttpGet("GetAllBookings")]
         public async Task<ActionResult> GetAllBookings()
         {
@@ -54,6 +58,19 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
 
+<<<<<<< Updated upstream
+=======
+        #region get booking (id)
+        // GET: api/Bookings
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Booking>> GetBooking(int Id)
+        {
+            return Ok(await _context.GetBooking(Id));
+        }
+        #endregion
+
+        #region create booking
+>>>>>>> Stashed changes
         // POST: api/Bookings
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -65,6 +82,33 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             //return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
         }
 
+<<<<<<< Updated upstream
+=======
+        #region update booking
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateBooking(int id, Booking data)
+        {
+            if (id != data.BookingId)
+            {
+                return BadRequest("ID mismatch!");
+            }
+
+            try
+            {
+                await _context.UpdateBooking(id, data);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+
+        }
+        #endregion
+
+        #region delete booking
+>>>>>>> Stashed changes
         // DELETE: api/Bookings/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteBooking(int id)

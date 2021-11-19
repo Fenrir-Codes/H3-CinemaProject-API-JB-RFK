@@ -48,6 +48,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         }
         #endregion
 
+<<<<<<< Updated upstream
+=======
+        #region update profile
+        public async Task<Profile> UpdateProfile(int id, Profile data)
+        {
+            return await _context.UpdateProfile(id, data);
+        }
+        #endregion
+
+>>>>>>> Stashed changes
         #region delete profile
         public async Task<bool> DeleteProfile(int Id)
         {
