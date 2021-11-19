@@ -23,7 +23,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
 
         // GET: api/PaymentDetails
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult> GetPayment(int Id)
         {
             return Ok(await _context.GetPayment(Id));

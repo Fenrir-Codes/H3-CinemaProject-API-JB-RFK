@@ -62,18 +62,20 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         #region update profile
         public async Task<Profile> UpdateProfile(int id, Profile data)
         {
-            var userProfile = await context.Profile.Where(p => p.ProfileId == id).FirstOrDefaultAsync();
-            if (userProfile != null)
-            { 
+            var findProfile = await context.Profile.Where(p => p.ProfileId == id).FirstOrDefaultAsync();
+
+            if (findProfile != null)
+            {
                 var update = new Profile();
                 {
-                    update.ProfileId = id;
-                    update.Firstname = data.Firstname;
-                    update.Lastname = data.Lastname;
-                    update.Address = data.Address;
-                    update.Email = data.Email;
-                    update.Phone = data.Phone;
+                    findProfile.ProfileId = data.ProfileId;
+                    findProfile.Firstname = data.Firstname;
+                    findProfile.Lastname = data.Lastname;
+                    findProfile.Address = data.Address;
+                    findProfile.Email = data.Email;
+                    findProfile.Phone = data.Phone;
                 }
+               //context.Entry(findProfile).State = EntityState.Modified; // den her virker ikke
                 await context.SaveChangesAsync();
                 return update;
             }

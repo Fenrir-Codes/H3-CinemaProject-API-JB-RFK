@@ -114,9 +114,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         {
             if (id != data.ProfileId)
             {
-                return BadRequest();
+                return BadRequest("Couldn't find matching ID.");
             }
-           // _context.UpdateProfile(data) = EntityState.Modified;
+
             try
             {
                 await _context.UpdateProfile(id, data);
