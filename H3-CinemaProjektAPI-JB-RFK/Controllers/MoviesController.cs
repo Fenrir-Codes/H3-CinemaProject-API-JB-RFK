@@ -53,26 +53,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         }
 
-        [HttpGet("MovieTitle")]
+        [HttpGet("MovieTitle/{title}")]
         public async Task<ActionResult> GetMovieTitle(string title)
         {
-            try
-            {
-                List<Movie> movieTitle = await _context.GetMovieTitle(title);
-                if (movieTitle == null)
-                {
-                    return Problem("Nothing was returned");
-                }
-                if (movieTitle.Count == 0)
-                {
-                    return NoContent(); // 204
-                }
-                return Ok(movieTitle);
-            }
-            catch (Exception e)
-            {
-                return Problem(e.Message);
-            }
+            return Ok(await _context.GetMovieTitle(title));
         }
 
         // POST: api/Movies
