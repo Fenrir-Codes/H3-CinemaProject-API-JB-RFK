@@ -21,13 +21,14 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         {
             _context = context;
         }
-
+        #region get by id
         // GET: api/Movies
         [HttpGet("{id}")]
         public async Task<ActionResult> GetMovie(int Id)
         {
             return Ok(await _context.GetMovie(Id));
         }
+        #endregion
 
         #region Get all movies
         [HttpGet("AllMovies")]
@@ -55,12 +56,15 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
+        #region get by title
         [HttpGet("MovieTitle/{title}")]
         public async Task<ActionResult> GetMovieTitle(string title)
         {
             return Ok(await _context.GetMovieTitle(title));
         }
+        #endregion
 
+        #region create Movie
         // POST: api/Movies
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -71,7 +75,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
             //return CreatedAtAction("GetMovie", new { id = movie.MovieId }, movie);
         }
+        #endregion
 
+        #region delete movie (id)
         // DELETE: api/Movies/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteMovie(int id)
@@ -90,8 +96,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
-
+        #region coimmented out code
         //    // GET: api/Movies/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<Movie>> GetMovie(int id)
@@ -143,5 +150,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //    {
         //        return _context.Movie.Any(e => e.MovieId == id);
         //    }
+        #endregion
     }
 }
