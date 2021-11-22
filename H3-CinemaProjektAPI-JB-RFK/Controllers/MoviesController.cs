@@ -29,6 +29,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             return Ok(await _context.GetMovie(Id));
         }
 
+        #region Get all movies
         [HttpGet("AllMovies")]
         public async Task<ActionResult> GetAllMovies()
         {
@@ -52,6 +53,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             //return Ok(await _context.GetAllMovies());
 
         }
+        #endregion
 
         [HttpGet("MovieTitle/{title}")]
         public async Task<ActionResult> GetMovieTitle(string title)
