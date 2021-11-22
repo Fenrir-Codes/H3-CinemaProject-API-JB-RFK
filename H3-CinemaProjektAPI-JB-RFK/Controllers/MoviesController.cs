@@ -57,6 +57,14 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
+        #region Get movie by title
+        [HttpGet("MovieTitle/{title}")]
+        public async Task<ActionResult> GetMovieTitle(string title)
+        {
+            return Ok(await _context.GetMovieTitle(title));
+        }
+        #endregion
+
         #region create Movie
         // POST: api/Movies
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

@@ -55,6 +55,36 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
+        #region director by firstName
+        [HttpGet("ByName/{firstName}")]
+        public async Task<ActionResult> ByFirstName(string name)
+        {
+            try
+            {
+                return Ok(await _context.ByFirstName(name));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+        }
+        #endregion
+
+        #region director by lastName
+        [HttpGet("ByLastName/{lastName}")]
+        public async Task<ActionResult> ByLastName(string lastName)
+        {
+            try
+            {
+                return Ok(await _context.ByLastName(lastName));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+        }
+        #endregion
+
         #region create directors
         // POST: api/Directors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -110,6 +140,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
         #endregion
+
+
 
     }
 }

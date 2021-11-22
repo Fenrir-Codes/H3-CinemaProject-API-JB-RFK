@@ -18,6 +18,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
 
         Task<Movie> UpdateMovie(int id, Movie data);
 
+        Task<Movie> GetMovieTitle(string title);
+
 
 
     }
