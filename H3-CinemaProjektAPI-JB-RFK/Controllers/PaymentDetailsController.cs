@@ -22,13 +22,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
+        #region Get by Payment by id
         // GET: api/PaymentDetails
         [HttpGet("{id}")]
         public async Task<ActionResult> GetPayment(int Id)
         {
             return Ok(await _context.GetPayment(Id));
         }
+        #endregion
 
+        #region Get All payment
         [HttpGet("AllPayment")]
         public async Task<ActionResult> GetAllPayment()
         {
@@ -50,6 +53,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
         // POST: api/PaymentDetails
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

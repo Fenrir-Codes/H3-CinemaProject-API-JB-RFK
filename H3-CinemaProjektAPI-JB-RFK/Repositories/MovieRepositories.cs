@@ -64,7 +64,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 
         public async Task<Movie> GetMovieTitle(string title)
         {
-            return await context.Movie.Include(i => i.Bookings).FirstOrDefaultAsync();
+            return await context.Movie.Where(i => i.Title == title).FirstOrDefaultAsync();
             
 
         }
