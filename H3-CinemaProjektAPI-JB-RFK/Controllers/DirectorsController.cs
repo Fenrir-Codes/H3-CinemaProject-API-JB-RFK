@@ -22,6 +22,36 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
+        #region director by firstName
+        [HttpGet("ByName/{name}")]
+        public async Task<ActionResult> ByFirstName(string name)
+        {
+            try
+            {
+                return Ok(await _context.ByFirstName(name));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+        }
+        #endregion
+
+        #region director by lastName
+        [HttpGet("ByLastName/{lastName}")]
+        public async Task<ActionResult> ByLastName(string lastName)
+        {
+            try
+            {
+                return Ok(await _context.ByLastName(lastName));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+        }
+        #endregion
+
         #region Get all directors
         [HttpGet("GetAllDirectors")]
         public async Task<ActionResult> GetAllDirectors()

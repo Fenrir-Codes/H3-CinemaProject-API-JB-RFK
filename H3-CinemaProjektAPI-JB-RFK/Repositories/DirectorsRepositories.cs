@@ -18,6 +18,20 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        #region Get director by lastname
+        public async Task<Directors> ByLastName(string lastName)
+        {
+            return await context.Directors.Where(n => n.LastName == lastName).FirstOrDefaultAsync();
+        }
+        #endregion
+
+        #region Get director by first name
+        public async Task<Directors> ByFirstName(string name)
+        {
+            return await context.Directors.Where(fname => fname.FirstName == name).FirstOrDefaultAsync();
+        }
+        #endregion
+
         #region create director
         public async Task<Directors> CreateDirector(Directors directors)
         {

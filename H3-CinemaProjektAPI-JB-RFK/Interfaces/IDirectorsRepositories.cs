@@ -17,5 +17,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
         Task<Directors> CreateDirector(Directors directors);
 
         Task<Directors> UpdateDirector(int id, Directors data);
+
+        Task<Directors> ByFirstName(string name);
+
+        Task<Directors> ByLastName(string lastName);
     }
 }
