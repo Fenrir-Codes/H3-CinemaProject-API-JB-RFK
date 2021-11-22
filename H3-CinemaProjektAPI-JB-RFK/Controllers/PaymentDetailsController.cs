@@ -55,6 +55,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
+        #region Create/post payment
         // POST: api/PaymentDetails
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -65,7 +66,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
             //return CreatedAtAction("GetPaymentDetails", new { id = paymentDetails.PaymentDetailsId }, paymentDetails);
         }
+        #endregion
 
+        #region Delete Payment
         // DELETE: api/PaymentDetails/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePaymentDetails(int id)
@@ -84,6 +87,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
         //    // GET: api/PaymentDetails/5
         //    [HttpGet("{id}")]

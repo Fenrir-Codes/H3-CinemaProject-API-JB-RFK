@@ -22,13 +22,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
+        #region Get seatnumber by id
         // GET: api/SeatNumbers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<SeatNumber>>> GetSeatNumber(int Id)
         {
             return Ok(await _context.GetSeatNumber(Id));
         }
+        #endregion
 
+        #region Get all seatnumbers
         [HttpGet("GetAllSeatNumbers")]
         public async Task<ActionResult> GetAllSeatNumbers()
         {
@@ -50,7 +53,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+        #endregion
 
+        #region Create/post seatnumber
         // POST: api/SeatNumbers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -61,7 +66,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
             //return CreatedAtAction("GetSeatNumber", new { id = seatNumber.SeatNumberId }, seatNumber);
         }
+        #endregion
 
+        #region Delete seatnumber
         // DELETE: api/SeatNumbers/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSeatNumber(int id)
@@ -80,6 +87,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
+#endregion
 
         //        // GET: api/SeatNumbers/5
         //        [HttpGet("{id}")]

@@ -17,31 +17,40 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             context = _context;
         }
 
+        #region Create/post movie
         public async Task<Movie> CreateMovie(Movie movie)
         {
             return await context.CreateMovie(movie);
         }
+        #endregion
 
+        #region Delete movie
         public async Task<bool> DeleteMovie(int Id)
         {
             var temp = await context.DeleteMovie(Id);
             return temp != null;
         }
+        #endregion
 
+        #region Get all movies
         public async Task<List<Movie>> GetAllMovies()
         {
             return await context.GetAllMovies();
         }
+        #endregion
 
-
+        #region Get movie by id
         public async Task<Movie> GetMovie(int Id)
         {
             return await context.GetMovie(Id);
         }
+        #endregion
 
+        #region Get movie by title
         public async Task<Movie> GetMovieTitle(string title)
         {
             return await context.GetMovieTitle(title);
         }
+        #endregion
     }
 }

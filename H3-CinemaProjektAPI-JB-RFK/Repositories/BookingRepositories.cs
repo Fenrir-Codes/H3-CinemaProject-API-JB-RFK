@@ -19,6 +19,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        #region Delete booking
         public async Task<Booking> DeleteBooking(int Id)
         {
             var booking = context.Booking.Find(Id);
@@ -29,18 +30,24 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             }
             return booking;
         }
+        #endregion
 
+        #region Get all bookings 
         public async Task<List<Booking>> GetAllBookings()
         {
             List<Booking> bookingList = await context.Booking.ToListAsync();
             return bookingList;
         }
+        #endregion
 
+        #region Get booking by id
         public async Task<Booking> GetBooking(int Id)
         {
             return await context.Booking.FindAsync(Id);
         }
+        #endregion
 
+        #region Create/post booking
         //create booking data
         public async Task<Booking> CreateBooking(Booking booking)
         {
@@ -48,6 +55,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             await context.SaveChangesAsync();
             return booking;
         }
+        #endregion
 
 
     }

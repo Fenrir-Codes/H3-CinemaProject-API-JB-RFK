@@ -18,13 +18,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        #region Create/post movie
         public async Task<Movie> CreateMovie(Movie movie)
         {
             context.Movie.Add(movie);
             await context.SaveChangesAsync();
             return movie;
         }
+        #endregion
 
+        #region Delete movie
         public async Task<Movie> DeleteMovie(int Id)
         {
             var movie = await context.Movie.FindAsync(Id);
@@ -34,6 +37,14 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
                 await context.SaveChangesAsync();
             }
             return movie;
+        }
+        #endregion
+
+        #region Get all movies + outcomments
+        public async Task<List<Movie>> GetAllMovies()
+        {
+            List<Movie> movieList = await context.Movie.ToListAsync();
+            return movieList;
         }
 
         //public async Task<List<MovieResponse>> GetAllMovies()
@@ -49,24 +60,22 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 
         //    }).ToList();
         //}
+        #endregion
 
-        public async Task<List<Movie>> GetAllMovies()
-        {
-            List<Movie> movieList = await context.Movie.ToListAsync();
-            return movieList;
-        }
-
-
+        #region Get movie by id
         public async Task<Movie> GetMovie(int Id)
         {
             return await context.Movie.FindAsync(Id);
         }
+        #endregion
 
+        #region Get movie by title
         public async Task<Movie> GetMovieTitle(string title)
         {
-            return await context.Movie.Where(i => i.Title == title).FirstOrDefaultAsync();
+            return await context.Movie.Where(t => t.Title!.Contains(title)).FirstOrDefaultAsync();
             
 
         }
+        #endregion
     }
 }

@@ -22,12 +22,14 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
+        #region Get movies by id
         // GET: api/Movies
         [HttpGet("{id}")]
         public async Task<ActionResult> GetMovie(int Id)
         {
             return Ok(await _context.GetMovie(Id));
         }
+        #endregion
 
         #region Get all movies
         [HttpGet("AllMovies")]

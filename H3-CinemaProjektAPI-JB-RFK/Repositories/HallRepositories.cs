@@ -18,13 +18,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
+        #region Create/post hall
         public async Task<Hall> CreateHall(Hall hall)
         {
             context.Hall.Add(hall);
             await context.SaveChangesAsync();
             return hall;
         }
+        #endregion
 
+        #region Delete hall
         public async Task<Hall> DeleteHall(int Id)
         {
             var hall = context.Hall.Find(Id);
@@ -35,16 +38,21 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             }
             return hall;
         }
+        #endregion
 
+        #region Get all halls
         public async Task<List<Hall>> GetAllHalls()
         {
             List<Hall> hallList = await context.Hall.ToListAsync();
             return hallList;
         }
+        #endregion
 
+        #region Get hall by id
         public async Task<Hall> GetHall(int Id)
         {
             return await context.Hall.FindAsync(Id);
         }
+        #endregion
     }
 }

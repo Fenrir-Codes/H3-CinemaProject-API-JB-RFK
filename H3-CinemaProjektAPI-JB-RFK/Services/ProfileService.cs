@@ -61,6 +61,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             return await _context.UpdateProfile(id, data);
         }
         #endregion
+
         #region delete profile
         public async Task<bool> DeleteProfile(int Id)
         {

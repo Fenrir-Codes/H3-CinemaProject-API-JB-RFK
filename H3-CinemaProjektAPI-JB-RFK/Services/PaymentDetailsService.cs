@@ -16,25 +16,33 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             context = _context;
         }
 
+        #region Create/post payment
         public async Task<PaymentDetails> CreatePayment(PaymentDetails paymentDetails)
         {
             return await context.CreatePayment(paymentDetails);
         }
+        #endregion
 
+        #region Delete payment
         public async Task<bool> DeletePayment(int Id)
         {
             var temp = await context.DeletePayment(Id);
             return temp != null;
         }
+        #endregion
 
+        #region Get all payments
         public async Task<List<PaymentDetails>> GetAllPaymentDetails()
         {
             return await context.GetAllPaymentDetails();
         }
+        #endregion
 
+        #region Get payment by id
         public async Task<PaymentDetails> GetPayment(int Id)
         {
             return await context.GetPayment(Id);
         }
+        #endregion
     }
 }
