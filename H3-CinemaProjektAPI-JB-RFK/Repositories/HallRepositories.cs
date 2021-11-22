@@ -18,7 +18,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
-        #region Create/post hall
+        #region create hall
         public async Task<Hall> CreateHall(Hall hall)
         {
             context.Hall.Add(hall);
@@ -27,7 +27,27 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
-        #region Delete hall
+        #region update hall
+        public async Task<Hall> UpdateHall(int id, Hall data)
+        {
+            var findHall = await context.Hall.Where(h => h.HallId == id).FirstOrDefaultAsync();
+            if (findHall != null)
+            {
+                findHall.HallId = data.HallId;
+                findHall.HAllName = data.HAllName;
+                findHall.SeatNumberId = data.SeatNumberId;
+                findHall.SeatNumbers = data.SeatNumbers;
+
+                context.Entry(findHall).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+                return findHall;
+            }
+            return null;
+
+        }
+        #endregion
+
+        #region delete hall (id)
         public async Task<Hall> DeleteHall(int Id)
         {
             var hall = context.Hall.Find(Id);
@@ -40,7 +60,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
-        #region Get all halls
+        #region get all hall
         public async Task<List<Hall>> GetAllHalls()
         {
             List<Hall> hallList = await context.Hall.ToListAsync();
@@ -48,7 +68,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
-        #region Get hall by id
+        #region gett hall (id)
         public async Task<Hall> GetHall(int Id)
         {
             return await context.Hall.FindAsync(Id);

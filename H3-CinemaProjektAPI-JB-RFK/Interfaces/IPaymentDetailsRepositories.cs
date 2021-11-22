@@ -9,9 +9,14 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
     public interface IPaymentDeatailsRepositories
     {
         Task<PaymentDetails> GetPayment(int Id);
+
         Task<List<PaymentDetails>> GetAllPaymentDetails();
 
         Task<PaymentDetails> DeletePayment(int Id);
+
         Task<PaymentDetails> CreatePayment(PaymentDetails paymentDetails);
+
+        Task<PaymentDetails> UpdatePaymentDetails(int id, PaymentDetails data);
+
     }
 }

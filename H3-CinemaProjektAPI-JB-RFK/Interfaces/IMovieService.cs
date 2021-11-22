@@ -10,11 +10,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
     public interface IMovieService
     {
         Task<Movie> GetMovie(int Id);
-        Task<List<Movie>> GetAllMovies();
-        Task<bool> DeleteMovie(int Id);
-        Task<Movie> CreateMovie(Movie movie);
-        Task<Movie> GetMovieTitle(string title);
 
+        Task<List<Movie>> GetAllMovies();
+
+        Task<bool> DeleteMovie(int Id);
+
+        Task<Movie> CreateMovie(Movie movie);
+
+        Task<Movie> UpdateMovie(int id, Movie data);
+
+        Task<Movie> GetMovieTitle(string title);
 
 
 

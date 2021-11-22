@@ -25,15 +25,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         }
 
-        #region get booking (id)
-        // GET: api/Bookings
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Booking>> GetBooking(int Id)
-        {
-            return Ok(await _context.GetBooking(Id));
-        }
-        #endregion
-
         #region get all bookings
         [HttpGet("GetAllBookings")]
         public async Task<ActionResult> GetAllBookings()
@@ -58,6 +49,15 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
+        #region get booking (id)
+        // GET: api/Bookings
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Booking>> GetBooking(int Id)
+        {
+            return Ok(await _context.GetBooking(Id));
+        }
+        #endregion
+
         #region create booking
         // POST: api/Bookings
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -68,6 +68,29 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             //await _context.SaveChangesAsync();
 
             //return CreatedAtAction("GetBooking", new { id = booking.BookingId }, booking);
+        }
+        #endregion
+
+        #region update booking
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateBooking(int id, Booking data)
+        {
+            if (id != data.BookingId)
+            {
+                return BadRequest("ID mismatch!");
+            }
+
+            try
+            {
+                await _context.UpdateBooking(id, data);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+
         }
         #endregion
 

@@ -21,14 +21,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         {
             _context = context;
         }
-        #region Get director with id
-        // GET: api/Directors
-        [HttpGet("{id}")]
-        public async Task<ActionResult> GetDirector(int Id)
-        {
-            return Ok(await _context.GetDirector(Id));
-        }
-        #endregion
 
         #region Get all directors
         [HttpGet("GetAllDirectors")]
@@ -54,33 +46,12 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
-        #region director by firstName
-        [HttpGet("ByName/{name}")]
-        public async Task<ActionResult> ByFirstName(string name)
+        #region Get director with id
+        // GET: api/Directors
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetDirector(int Id)
         {
-            try
-            {
-                return Ok(await _context.ByFirstName(name));
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(400, ex.Message);
-            }
-        }
-        #endregion
-
-        #region director by lastName
-        [HttpGet("ByLastName/{lastName}")]
-        public async Task<ActionResult> ByLastName(string lastName)
-        {
-            try
-            {
-                return Ok(await _context.ByLastName(lastName));
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(400, ex.Message);
-            }
+            return Ok(await _context.GetDirector(Id));
         }
         #endregion
 
@@ -94,6 +65,28 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             //await _context.SaveChangesAsync();
 
             //return CreatedAtAction("GetDirectors", new { id = directors.DirectorsId }, directors);
+        }
+        #endregion
+
+        #region update director
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateDirector(int id, Directors data)
+        {
+            if (id != data.DirectorsId)
+            {
+                return BadRequest("ID mismatch!");
+            }
+
+            try
+            {
+                await _context.UpdateDirector(id, data);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+
         }
         #endregion
 

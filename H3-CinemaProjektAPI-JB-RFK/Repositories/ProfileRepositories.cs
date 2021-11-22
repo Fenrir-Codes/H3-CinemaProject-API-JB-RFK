@@ -49,15 +49,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
-        #region profile by name
-        public async Task<Profile> ProfileByName(string name)
-        {
-            return await context.Profile.FindAsync(name);
-            //return await context.Profile.Include(p => p.Bookings).FirstOrDefaultAsync();
-
-        }
-        #endregion
-
         #region create profile function
         //create profile data
         public async Task<Profile> CreateProfile(Profile data)
@@ -72,23 +63,36 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         public async Task<Profile> UpdateProfile(int id, Profile data)
         {
             var findProfile = await context.Profile.Where(p => p.ProfileId == id).FirstOrDefaultAsync();
-
             if (findProfile != null)
             {
-                var update = new Profile();
-                {
-                    //findProfile.ProfileId = data.ProfileId;
-                    findProfile.Firstname = data.Firstname;
-                    findProfile.Lastname = data.Lastname;
-                    findProfile.Address = data.Address;
-                    findProfile.Email = data.Email;
-                    findProfile.Phone = data.Phone;
-                }
-               //context.Entry(findProfile).State = EntityState.Modified; // den her virker ikke
+                findProfile.ProfileId = data.ProfileId;
+                findProfile.Firstname = data.Firstname;
+                findProfile.Lastname = data.Lastname;
+                findProfile.Address = data.Address;
+                findProfile.Email = data.Email;
+                findProfile.Phone = data.Phone;
+
+                context.Entry(findProfile).State = EntityState.Modified;
                 await context.SaveChangesAsync();
-                return update;
+                return findProfile;
             }
             return null;
+
+            #region outcommented
+            //var update = new Profile();
+            //{
+            //  //  update.ProfileId = data.ProfileId;
+            //    update.Firstname = data.Firstname;
+            //    update.Lastname = data.Lastname;
+            //    update.Address = data.Address;
+            //    update.Email = data.Email;
+            //    update.Phone = data.Phone;
+            //}
+            //context.Entry(findProfile).State = EntityState.Modified; // den her virker ikke
+            //context.Profile.Add(update);
+            //await context.SaveChangesAsync();
+            //return update;
+            #endregion
         }
         #endregion
 
