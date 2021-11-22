@@ -27,6 +27,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
+
         #region update seatnumber
         public async Task<SeatNumber> UpdateSeatnumber(int id, SeatNumber data)
         {
