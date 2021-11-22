@@ -22,7 +22,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
-        #region get all seatnumbers
+        #region Get seatnumber by id
+        // GET: api/SeatNumbers
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<SeatNumber>>> GetSeatNumber(int Id)
+        {
+            return Ok(await _context.GetSeatNumber(Id));
+        }
+        #endregion
+
+        #region Get all seatnumbers
         [HttpGet("GetAllSeatNumbers")]
         public async Task<ActionResult> GetAllSeatNumbers()
         {
@@ -46,16 +55,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
-        #region get seatnumber (id)
-        // GET: api/SeatNumbers
-        [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<SeatNumber>>> GetSeatNumber(int Id)
-        {
-            return Ok(await _context.GetSeatNumber(Id));
-        }
-        #endregion
-
-        #region create seatnumber
+        #region Create/post seatnumber
         // POST: api/SeatNumbers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -68,29 +68,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
-        #region update seatnumber
-        [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateSeatnumber(int id, SeatNumber data)
-        {
-            if (id != data.SeatNumberId)
-            {
-                return BadRequest("ID mismatch!");
-            }
-
-            try
-            {
-                await _context.UpdateSeatnumber(id, data);
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(400, ex.Message);
-            }
-
-        }
-        #endregion
-
-        #region delete seatnumber (id)
+        #region Delete seatnumber
         // DELETE: api/SeatNumbers/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSeatNumber(int id)
@@ -109,11 +87,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 return Problem(e.Message);
             }
         }
-        #endregion
+#endregion
 
-
-
-        #region commented out code
         //        // GET: api/SeatNumbers/5
         //        [HttpGet("{id}")]
         //        public async Task<ActionResult<SeatNumber>> GetSeatNumber(int id)
@@ -164,6 +139,5 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         //        {
         //            return _context.SeatNumber.Any(e => e.SeatNumberId == id);
         //        }
-        #endregion
     }
 }
