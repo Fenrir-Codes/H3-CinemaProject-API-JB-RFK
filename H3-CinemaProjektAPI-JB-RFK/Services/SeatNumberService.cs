@@ -16,21 +16,14 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             context = _context;
         }
 
-        #region create seatnumber
+        #region Create/post seatnumber
         public async Task<SeatNumber> CreateSeat(SeatNumber seatNumber)
         {
             return await context.CreateSeat(seatNumber);
         }
         #endregion
 
-        #region update seatnumber
-        public async Task<SeatNumber> UpdateSeatnumber(int id, SeatNumber data)
-        {
-            return await context.UpdateSeatnumber(id, data);
-        }
-        #endregion
-
-        #region delete seatnumber (id)
+        #region Delete seatnumber
         public async Task<bool> DeleteSeat(int Id)
         {
             var temp = await context.DeleteSeat(Id);
@@ -38,14 +31,14 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         }
         #endregion
 
-        #region get all seat numbers
+        #region Get all seatnumbers
         public async Task<List<SeatNumber>> GetAllSeatNumbers()
         {
             return await context.GetAllSeatNumbers();
         }
         #endregion
 
-        #region get seatnumber (id)
+        #region Get seatnumber by id
         public async Task<SeatNumber> GetSeatNumber(int Id)
         {
             return await context.GetSeatNumber(Id);

@@ -18,7 +18,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
-        #region create seat
+        #region Create/post seatnumber
         public async Task<SeatNumber> CreateSeat(SeatNumber seatNumber)
         {
             context.SeatNumber.Add(seatNumber);
@@ -27,27 +27,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
-
-        #region update seatnumber
-        public async Task<SeatNumber> UpdateSeatnumber(int id, SeatNumber data)
-        {
-            var findSeat = await context.SeatNumber.Where(sn => sn.SeatNumberId == id).FirstOrDefaultAsync();
-            if (findSeat != null)
-            {
-                findSeat.SeatNumberId = data.SeatNumberId;
-                findSeat.SeatRow = data.SeatRow;
-                findSeat.SeatColumn = data.SeatColumn;
-
-                context.Entry(findSeat).State = EntityState.Modified;
-                await context.SaveChangesAsync();
-                return findSeat;
-            }
-            return null;
-
-        }
-        #endregion
-
-        #region delete seat (id)
+        #region Delete seatnumber
         public async Task<SeatNumber> DeleteSeat(int Id)
         {
             var seatnumb = context.SeatNumber.Find(Id);
@@ -60,7 +40,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
-        #region get all seats
+        #region Get all seatnumbers
         public async Task<List<SeatNumber>> GetAllSeatNumbers()
         {
             List<SeatNumber> seatNumberList = await context.SeatNumber.ToListAsync();
@@ -68,7 +48,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
-        #region get seat (id)
+        #region Get seatnumber by id
         public async Task<SeatNumber> GetSeatNumber(int Id)
         {
             return await context.SeatNumber.FindAsync(Id);

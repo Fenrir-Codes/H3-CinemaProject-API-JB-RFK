@@ -16,21 +16,28 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             context = _context;
         }
 
-        #region create director
+        #region Get director by lastname
+        public async Task<Directors> ByLastName(string lastName)
+        {
+            return await context.ByLastName(lastName);
+        }
+        #endregion
+
+        #region Get director by first name
+        public async Task<Directors> ByFirstName(string name)
+        {
+            return await context.ByFirstName(name);
+        }
+        #endregion
+
+        #region Create/post director
         public async Task<Directors> CreateDirector(Directors directors)
         {
             return await context.CreateDirector(directors);
         }
         #endregion
 
-        #region update director
-        public async Task<Directors> UpdateDirector(int id, Directors data)
-        {
-            return await context.UpdateDirector(id, data);
-        }
-        #endregion
-
-        #region delete director (id)
+        #region Delete director
         public async Task<bool> DeleteDirector(int Id)
         {
             var temp = await context.DeleteDirector(Id);
@@ -38,14 +45,14 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         }
         #endregion
 
-        #region get all directors
+        #region Get all directors
         public async Task<List<Directors>> GetAllDirectors()
         {
             return await context.GetAllDirectors();
         }
         #endregion
 
-        #region get director (id)
+        #region Get director by id
         public async Task<Directors> GetDirector(int Id)
         {
             return await context.GetDirector(Id);
