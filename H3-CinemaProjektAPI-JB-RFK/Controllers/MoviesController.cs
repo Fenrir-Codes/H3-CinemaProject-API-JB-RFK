@@ -89,7 +89,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 {
                     return Problem("Movie was not deleted, something went wrong");
                 }
-                return NoContent();
+                return Ok(result +" Deleted successfully");
             }
             catch (Exception e)
             {

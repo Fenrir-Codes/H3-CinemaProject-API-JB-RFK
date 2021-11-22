@@ -31,7 +31,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         }
         #endregion
 
-        #region delete Movie
+        #region delete Movie (id)
         public async Task<bool> DeleteMovie(int Id)
         {
             var temp = await context.DeleteMovie(Id);
