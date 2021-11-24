@@ -48,7 +48,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         #region get seatnumber (id)
         // GET: api/SeatNumbers
-        [HttpGet("{id}")]
+        [HttpGet("{Id}")]
         public async Task<ActionResult<IEnumerable<SeatNumber>>> GetSeatNumber(int Id)
         {
             return Ok(await _context.GetSeatNumber(Id));

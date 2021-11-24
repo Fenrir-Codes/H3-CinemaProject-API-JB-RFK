@@ -90,10 +90,14 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         #endregion
 
         #region get movie (id)
-        public async Task<Movie> GetMovie(int Id)
+        public async Task<List<Movie>> GetMovie(int Id)
         {
-            return await context.Movie.FindAsync(Id);
+            return await context.Movie.Where(m => m.MovieId == Id).ToListAsync();
+
         }
+           
+            
+        
         #endregion
 
         #region Get movie by title

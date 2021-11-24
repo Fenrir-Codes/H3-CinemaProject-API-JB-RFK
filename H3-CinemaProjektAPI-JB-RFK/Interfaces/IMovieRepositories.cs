@@ -8,7 +8,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
 {
     public interface IMovieRepositories
     {
-        Task<Movie> GetMovie(int Id);
+        Task<List<Movie>> GetMovie(int Id);
 
         Task<List<Movie>> GetAllMovies();
 

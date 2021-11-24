@@ -48,7 +48,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         #region Get director with id
         // GET: api/Directors
-        [HttpGet("{id}")]
+        [HttpGet("{Id}")]
         public async Task<ActionResult> GetDirector(int Id)
         {
             return Ok(await _context.GetDirector(Id));
@@ -57,11 +57,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         #region director by firstName
         [HttpGet("ByName/{firstName}")]
-        public async Task<ActionResult> ByFirstName(string name)
+        public async Task<ActionResult> ByFirstName(string firstName)
         {
             try
             {
-                return Ok(await _context.ByFirstName(name));
+                return Ok(await _context.ByFirstName(firstName));
             }
             catch (Exception ex)
             {
