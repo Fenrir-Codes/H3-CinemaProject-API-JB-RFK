@@ -23,7 +23,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #region get by id
         // GET: api/Movies
-        [HttpGet("{id}")]
+        [HttpGet("{Id}")]
         public async Task<ActionResult> GetMovie(int Id)
         {
             return Ok(await _context.GetMovie(Id));
