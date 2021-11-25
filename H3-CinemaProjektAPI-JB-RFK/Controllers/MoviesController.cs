@@ -21,16 +21,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         {
             _context = context;
         }
-        #region get by id
-        // GET: api/Movies
-        [HttpGet("{Id}")]
-        public async Task<ActionResult> GetMovie(int Id)
-        {
-            return Ok(await _context.GetMovie(Id));
-        }
-        #endregion
 
-        #region Get all movies
+        #region get all movies
         [HttpGet("AllMovies")]
         public async Task<ActionResult> GetAllMovies()
         {
@@ -56,7 +48,16 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
-        #region get by title
+        #region get movie (id)
+        // GET: api/Movies
+        [HttpGet("{Id}")]
+        public async Task<ActionResult> GetMovie(int Id)
+        {
+            return Ok(await _context.GetMovie(Id));
+        }
+        #endregion
+
+        #region Get movie by title
         [HttpGet("MovieTitle/{title}")]
         public async Task<ActionResult> GetMovieTitle(string title)
         {
@@ -77,7 +78,29 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
-        #region delete movie (id)
+        #region update movie
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateMovie(int id, Movie data)
+        {
+            if (id != data.MovieId)
+            {
+                return BadRequest("ID mismatch!");
+            }
+
+            try
+            {
+                await _context.UpdateMovie(id, data);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+
+        }
+        #endregion
+
+        #region delete Movie (id)
         // DELETE: api/Movies/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteMovie(int id)
@@ -98,7 +121,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
-        #region coimmented out code
+
+        #region comment out code
         //    // GET: api/Movies/5
         //    [HttpGet("{id}")]
         //    public async Task<ActionResult<Movie>> GetMovie(int id)

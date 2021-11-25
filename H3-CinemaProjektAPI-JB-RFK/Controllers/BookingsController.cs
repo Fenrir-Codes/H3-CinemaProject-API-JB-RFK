@@ -51,7 +51,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         #region get booking (id)
         // GET: api/Bookings
-        [HttpGet("{id}")]
+        [HttpGet("{Id}")]
         public async Task<ActionResult<Booking>> GetBooking(int Id)
         {
             return Ok(await _context.GetBooking(Id));

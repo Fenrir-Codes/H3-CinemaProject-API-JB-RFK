@@ -22,6 +22,39 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             _context = context;
         }
 
+        #region Get all directors
+        [HttpGet("GetAllDirectors")]
+        public async Task<ActionResult> GetAllDirectors()
+        {
+            try
+            {
+                List<Directors> directorList = await _context.GetAllDirectors();
+                if (directorList == null)
+                {
+                    return Problem("Nothing was returned");
+                }
+                if (directorList.Count == 0)
+                {
+                    return NoContent(); // 204
+                }
+                return Ok(directorList);
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message);
+            }
+        }
+        #endregion
+
+        #region Get director with id
+        // GET: api/Directors
+        [HttpGet("{Id}")]
+        public async Task<ActionResult> GetDirector(int Id)
+        {
+            return Ok(await _context.GetDirector(Id));
+        }
+        #endregion
+
         #region director by firstName
         [HttpGet("ByName/{firstName}")]
         public async Task<ActionResult> ByFirstName(string firstName)
@@ -49,39 +82,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             {
                 return StatusCode(400, ex.Message);
             }
-        }
-        #endregion
-
-        #region Get all directors
-        [HttpGet("GetAllDirectors")]
-        public async Task<ActionResult> GetAllDirectors()
-        {
-            try
-            {
-                List<Directors> directorList = await _context.GetAllDirectors();
-                if (directorList == null)
-                {
-                    return Problem("Nothing was returned");
-                }
-                if (directorList.Count == 0)
-                {
-                    return NoContent(); // 204
-                }
-                return Ok(directorList);
-            }
-            catch (Exception e)
-            {
-                return Problem(e.Message);
-            }
-        }
-        #endregion
-
-        #region Get director with id
-        // GET: api/Directors
-        [HttpGet("GetDirector/{Id}")]
-        public async Task<ActionResult> GetDirector(int Id)
-        {
-            return Ok(await _context.GetDirector(Id));
         }
         #endregion
 
@@ -140,6 +140,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
             }
         }
         #endregion
+
+
 
     }
 }

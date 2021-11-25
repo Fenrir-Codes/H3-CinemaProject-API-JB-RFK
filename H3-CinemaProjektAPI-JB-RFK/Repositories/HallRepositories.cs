@@ -68,7 +68,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
-        #region gett hall (id)
+        #region get hall (id)
         public async Task<Hall> GetHall(int Id)
         {
             return await context.Hall.FindAsync(Id);

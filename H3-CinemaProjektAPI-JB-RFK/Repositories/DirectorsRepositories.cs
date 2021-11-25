@@ -18,20 +18,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             context = _context;
         }
 
-        #region Get director by lastname
-        public async Task<Directors> ByLastName(string lastName)
-        {
-            return await context.Directors.Where(n => n.LastName == lastName).FirstOrDefaultAsync();
-        }
-        #endregion
-
-        #region Get director by first name
-        public async Task<Directors> ByFirstName(string firstName)
-        {
-            return await context.Directors.Where(fname => fname.FirstName == firstName).FirstOrDefaultAsync();
-        }
-        #endregion
-
         #region create director
         public async Task<Directors> CreateDirector(Directors directors)
         {
@@ -88,12 +74,18 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
-        //#region Movie by director
-        //public async Task<List<Directors>> MovieByDirector(Movie movie)
-        //{
-        //    var movie = await context.Directors.Where(name => name.Movies == Movie)
-        //    return movie;
-        //}
-        //#endregion
+        #region Get director by lastname
+        public async Task<Directors> ByLastName(string lastName)
+        {
+            return await context.Directors.Where(n => n.LastName.Contains(lastName)).FirstOrDefaultAsync();
+        }
+        #endregion
+
+        #region Get director by firstname
+        public async Task<Directors> ByFirstName(string name)
+        {
+            return await context.Directors.Where(fname => fname.FirstName.Contains(name)).FirstOrDefaultAsync();
+        }
+        #endregion
     }
 }
