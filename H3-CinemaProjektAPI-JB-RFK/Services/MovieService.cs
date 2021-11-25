@@ -47,7 +47,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         #endregion
 
         #region get movie (id)
-        public async Task<Movie> GetMovie(int Id)
+        public async Task<List<Movie>> GetMovie(int Id)
         {
             return await context.GetMovie(Id);
         }

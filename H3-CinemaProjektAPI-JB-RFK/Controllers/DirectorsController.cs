@@ -141,7 +141,20 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
         #endregion
 
-
+        #region Movie by director
+        [HttpGet("MovieByDirector/{name}")]
+        public async Task<ActionResult> MovieByDirector(string name)
+        {
+            try
+            {
+                return Ok(await _context.MovieByDirector(name));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+        }
+        #endregion
 
     }
 }

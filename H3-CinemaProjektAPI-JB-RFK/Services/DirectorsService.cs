@@ -65,5 +65,12 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             return await context.GetDirector(Id);
         }
         #endregion
+
+        #region Movie by dirctor
+        public async Task<List<Directors>> MovieByDirector(string name)
+        {
+            return await context.MovieByDirector(name);
+        }
+        #endregion
     }
 }
