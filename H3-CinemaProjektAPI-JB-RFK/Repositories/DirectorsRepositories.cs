@@ -26,9 +26,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         #endregion
 
         #region Get director by first name
-        public async Task<Directors> ByFirstName(string name)
+        public async Task<Directors> ByFirstName(string firstName)
         {
-            return await context.Directors.Where(fname => fname.FirstName == name).FirstOrDefaultAsync();
+            return await context.Directors.Where(fname => fname.FirstName == firstName).FirstOrDefaultAsync();
         }
         #endregion
 
@@ -87,5 +87,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             return await context.Directors.FindAsync(Id);
         }
         #endregion
+
+        //#region Movie by director
+        //public async Task<List<Directors>> MovieByDirector(Movie movie)
+        //{
+        //    var movie = await context.Directors.Where(name => name.Movies == Movie)
+        //    return movie;
+        //}
+        //#endregion
     }
 }

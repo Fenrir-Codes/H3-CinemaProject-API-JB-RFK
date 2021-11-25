@@ -23,12 +23,12 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
 
         #region director by firstName
-        [HttpGet("ByName/{name}")]
-        public async Task<ActionResult> ByFirstName(string name)
+        [HttpGet("ByName/{firstName}")]
+        public async Task<ActionResult> ByFirstName(string firstName)
         {
             try
             {
-                return Ok(await _context.ByFirstName(name));
+                return Ok(await _context.ByFirstName(firstName));
             }
             catch (Exception ex)
             {

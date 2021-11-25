@@ -19,6 +19,5 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
         Task<List<Movie>> GetMovieTitle(string title);
 
 
-
     }
 }

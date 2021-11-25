@@ -99,8 +99,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         #region get by title
         public async Task<List<Movie>> GetMovieTitle(string title)
         {
-            var book = await context.Movie.Where(t => t.Title!.Contains(title)).ToListAsync();
-            return book;
+            var movie = await context.Movie.Where(t => t.Title!.Contains(title)).ToListAsync();
+            return movie;
         }
         #endregion
     }
