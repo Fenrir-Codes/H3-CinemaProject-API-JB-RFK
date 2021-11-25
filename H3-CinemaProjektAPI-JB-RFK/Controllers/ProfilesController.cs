@@ -25,12 +25,12 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         #region login function
         //Login via profile with email and password
-        [HttpPost("Login")]
-        public async Task<ActionResult> Login(string Email, string password)
+        [HttpPost("Login/")]
+        public async Task<ActionResult> Login(string Email, string Password)
         {
             try
             {
-                var user = await _context.Login(Email, password);
+                var user = await _context.Login(Email, Password);
 
                 //this if statement grabbing the object from the ProfileRepositories
                 if (user != null)
@@ -42,7 +42,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
                     //if the login was not successfull or returned empty object. 
                     //So the shit api wont crash and exit. fuck yeah i am bloody tired...........
-                    return BadRequest(400 + " -  Wrong email and/or password or not registered profile!");
+                    return BadRequest("Wrong Email and/or Password or not registered!");
                 }
 
             }
