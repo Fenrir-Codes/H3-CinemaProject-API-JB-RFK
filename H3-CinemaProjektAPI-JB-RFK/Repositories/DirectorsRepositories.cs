@@ -89,9 +89,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         #endregion
 
         #region Movie by director
-        public async Task<List<Directors>> MovieByDirector(string name)
+        public async Task<List<Directors>> MovieByDirector(string fname, string lname)
         {
-            return await context.Directors.Include(m => m.Movies).Where(f => f.FirstName == name || f.LastName == name).ToListAsync();            
+            return await context.Directors.Include(m => m.Movies).Where(f => f.FirstName.Contains(fname) || f.LastName.Contains(lname)).ToListAsync();            
         }
         #endregion
     }

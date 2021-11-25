@@ -22,6 +22,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
 
         Task<Directors> ByLastName(string lastName);
 
-        Task<List<Directors>> MovieByDirector(string name);
+        Task<List<Directors>> MovieByDirector(string fname, string lname);
     }
 }
