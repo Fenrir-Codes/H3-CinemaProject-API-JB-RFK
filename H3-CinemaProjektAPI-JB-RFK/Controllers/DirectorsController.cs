@@ -142,11 +142,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         #endregion
 
         #region Movie by director
-        [HttpGet("MovieByDirector/{fname, lname}")]
+        [HttpGet("MovieByDirector/")]
         public async Task<ActionResult> MovieByDirector(string fname, string lname)
         {
             try
-            {
+            {                
                 return Ok(await _context.MovieByDirector(fname, lname));
             }
             catch (Exception ex)
