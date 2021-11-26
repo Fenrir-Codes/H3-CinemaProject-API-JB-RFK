@@ -13,6 +13,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.DTO
         public string Lastname { get; set; }
         public string Address { get; set; }
         public int Phone { get; set; }
+        public string Image { get; set; }
         public int Role { get; set; }
     }
 

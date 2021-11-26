@@ -107,13 +107,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 
         #region login function
         //Login
-        public async Task<ProfileResponse> Login(string mail, string password)
+        public async Task<ProfileResponse> Login(string Email, string Password)
         {
             //En Task er et objekt, der repræsenterer noget arbejde, skal udføres.
             //Opgaven kan fortælle dig, om arbejdet er afsluttet, og hvis operationen returnerer et resultat, giver opgaven dig resultatet.
 
             //user object (Profile)
-            var user = await context.Profile.Where(user => user.Email == mail && user.Password == password).FirstOrDefaultAsync();
+            var user = await context.Profile.Where(user => user.Email == Email && user.Password == Password).FirstOrDefaultAsync();
             //if the object is not empty ->   
             if (user != null)
             {
@@ -126,6 +126,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
                     response.Address = user.Address;
                     response.Email = user.Email;
                     response.Phone = user.Phone;
+                    response.Image = user.Image;
                     response.Role = user.Role;
                 }
                 //then return the object ->
