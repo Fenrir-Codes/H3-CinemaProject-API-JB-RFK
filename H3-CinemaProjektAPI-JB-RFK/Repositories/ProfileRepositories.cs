@@ -117,6 +117,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
                     response.Address = user.Address;
                     response.Email = user.Email;
                     response.Phone = user.Phone;
+                    response.Image = user.Image;
                     response.Role = user.Role;
                 }
                 //then return the object ->

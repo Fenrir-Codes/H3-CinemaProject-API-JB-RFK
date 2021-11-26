@@ -25,7 +25,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         #region login function
         //Login via profile with email and password
-        [HttpPost("Login/")]
+        [HttpPost("Login")]
         public async Task<ActionResult> Login(string Email, string Password)
         {
             try
