@@ -145,14 +145,38 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         [HttpGet("MovieByDirector/")]
         public async Task<ActionResult> MovieByDirector(string fname, string lname)
         {
+
+         
             try
-            {                
+            {
+                if(fname == null && lname == null) {
+                    return BadRequest();
+                }
+
+                if(lname != null)
+                {
+                    return Ok(await _context.MovieByDirector("", lname));
+                }
+
+                if (fname != null)
+                {
+                    return Ok(await _context.MovieByDirector(fname, ""));
+                }
+                //if (lname != null)
+                //{
+                //    return Ok(await _context.MovieByDirector(fname, lname));
+                //}
+                //if (fname != null && lname != null)
+                //{
+                //    return Ok(await _context.MovieByDirector(fname, lname));
+                //}
+
                 return Ok(await _context.MovieByDirector(fname, lname));
             }
             catch (Exception ex)
             {
                 return StatusCode(400, ex.Message);
-            }
+            }            
         }
         #endregion
 

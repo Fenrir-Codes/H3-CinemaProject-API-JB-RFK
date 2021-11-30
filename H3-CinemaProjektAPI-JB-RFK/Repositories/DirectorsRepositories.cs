@@ -90,7 +90,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
 
         #region Movie by director
         public async Task<List<Directors>> MovieByDirector(string fname, string lname)
-        {
+        {   // Alle de metoder man kan kalde efter "Directors" er LinQ / LinQ er noget med at spørger ind til en datasamling
             return await context.Directors.Include(m => m.Movies).Where(f => f.FirstName.Contains(fname) || f.LastName.Contains(lname)).ToListAsync();            
         }
         #endregion
