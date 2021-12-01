@@ -65,11 +65,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
             var findProfile = await context.Profile.Where(p => p.ProfileId == id).FirstOrDefaultAsync();
             if (findProfile != null)
             {
-                findProfile.ProfileId = data.ProfileId;
                 findProfile.Firstname = data.Firstname;
                 findProfile.Lastname = data.Lastname;
                 findProfile.Address = data.Address;
                 findProfile.Email = data.Email;
+                findProfile.Password = data.Password;
                 findProfile.Phone = data.Phone;
 
                 context.Entry(findProfile).State = EntityState.Modified;
