@@ -142,26 +142,26 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         #endregion
 
         #region Movie by director
-        [HttpGet("MovieByDirector/")]
-        public async Task<ActionResult> MovieByDirector(string fname, string lname)
+        [HttpGet("MovieByDirector/{name}")]
+        public async Task<ActionResult> MovieByDirector(string name)
         {
 
          
             try
             {
-                if(fname == null && lname == null) {
+                if(name == null) {
                     return BadRequest();
                 }
 
-                if(lname != null)
-                {
-                    return Ok(await _context.MovieByDirector("", lname));
-                }
+                //if(name != null)
+                //{
+                //    return Ok(await _context.MovieByDirector("", name));
+                //}
 
-                if (fname != null)
-                {
-                    return Ok(await _context.MovieByDirector(fname, ""));
-                }
+                //if (name != null)
+                //{
+                //    return Ok(await _context.MovieByDirector(name, ""));
+                //}
                 //if (lname != null)
                 //{
                 //    return Ok(await _context.MovieByDirector(fname, lname));
@@ -171,7 +171,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 //    return Ok(await _context.MovieByDirector(fname, lname));
                 //}
 
-                return Ok(await _context.MovieByDirector(fname, lname));
+                return Ok(await _context.MovieByDirector(name));
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
-﻿using H3_CinemaProjektAPI_JB_RFK.Model;
+﻿using H3_CinemaProjektAPI_JB_RFK.DTO;
+using H3_CinemaProjektAPI_JB_RFK.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Interfaces
 
         Task<Directors> ByLastName(string lastName);
 
-        Task<List<Directors>> MovieByDirector(string fname, string lname);
+        Task<List<Directors>> MovieByDirector(string name);
     }
 }

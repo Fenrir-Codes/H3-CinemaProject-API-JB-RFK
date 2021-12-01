@@ -1,4 +1,5 @@
-﻿using H3_CinemaProjektAPI_JB_RFK.Interfaces;
+﻿using H3_CinemaProjektAPI_JB_RFK.DTO;
+using H3_CinemaProjektAPI_JB_RFK.Interfaces;
 using H3_CinemaProjektAPI_JB_RFK.Model;
 using System;
 using System.Collections.Generic;
@@ -67,9 +68,43 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         #endregion
 
         #region Movie by dirctor
-        public async Task<List<Directors>> MovieByDirector(string fname, string lname)
+        public async Task<List<DirectorsResponse>> MovieByDirector(string name)
         {
-            return await context.MovieByDirector(fname, lname);
+            List<Directors> byDirectorResponses = await context.MovieByDirector(name);
+            return byDirectorResponses.Select(obj => new DirectorsResponse
+            {
+                Movie = obj.Movie
+                //Title = obj.Movie.Title,
+                //Language = obj.Language,
+                //Country = obj.Country,
+                //Genre = obj.Genre,
+                //Image = obj.Image,
+                //ReleaseDate = obj.ReleaseDate
+            }).ToList();
+
+
+            //List<MovieByDirectorResponse> movieByDirectors =
+            //new List<MovieByDirectorResponse> {
+            //new MovieByDirectorResponse()
+            //{
+            //    DirectorId = 1,
+            //    FirstName = "Lars",
+            //    LastName = "Noget"
+            //}, new MovieByDirectorResponse()
+            //{
+            //    DirectorId = 2,
+            //    FirstName = "Tom",
+            //    LastName = "Selleck"
+            //}, new MovieByDirectorResponse()
+            //{
+            //    DirectorId = 3,
+            //    FirstName = "Sidste",
+            //    LastName = "Gang"
+            //}}.ToList();
+
+            //return movieByDirectors;
+
+            //return await context.MovieByDirector(name);
         }
         #endregion
     }
