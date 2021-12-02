@@ -20,7 +20,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
 
         /* EF Relations */
         public ICollection<Booking> Bookings { get; set; }
-        public ICollection<Directors> Directors { get; set; }
+        //public ICollection<Directors> Directors { get; set; }
 
     }
 }

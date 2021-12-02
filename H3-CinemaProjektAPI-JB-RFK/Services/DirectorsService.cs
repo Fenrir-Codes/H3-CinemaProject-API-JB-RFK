@@ -68,19 +68,15 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         #endregion
 
         #region Movie by dirctor
-        public async Task<List<DirectorsResponse>> MovieByDirector(string name)
+        public async Task<List<MovieByDirectorResponse>> MovieByDirector(string name)
         {
-            List<Directors> byDirectorResponses = await context.MovieByDirector(name);
-            return byDirectorResponses.Select(obj => new DirectorsResponse
+            List<Directors> byDirectorResponses =  await context.MovieByDirector(name);
+            return byDirectorResponses.Select(obj => new MovieByDirectorResponse
             {
-                Movie = obj.Movie
-                //Title = obj.Movie.Title,
-                //Language = obj.Language,
-                //Country = obj.Country,
-                //Genre = obj.Genre,
-                //Image = obj.Image,
-                //ReleaseDate = obj.ReleaseDate
+                Movie = obj.Movie,
+
             }).ToList();
+
 
 
             //List<MovieByDirectorResponse> movieByDirectors =
