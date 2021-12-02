@@ -41,6 +41,13 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         }
         #endregion
 
+        #region profile by name
+        public async Task<Profile> ProfileByName(string name)
+        {
+            return await _context.ProfileByName(name);
+        }
+        #endregion
+
         #region create profile
         public async Task<Profile> CreateProfile(Profile data)
         {

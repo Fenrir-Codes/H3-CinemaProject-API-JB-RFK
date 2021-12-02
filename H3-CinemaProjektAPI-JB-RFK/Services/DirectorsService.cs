@@ -16,6 +16,20 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             context = _context;
         }
 
+        #region Get director by lastname
+        public async Task<Directors> ByLastName(string lastName)
+        {
+            return await context.ByLastName(lastName);
+        }
+        #endregion
+
+        #region Get director by first name
+        public async Task<Directors> ByFirstName(string name)
+        {
+            return await context.ByFirstName(name);
+        }
+        #endregion
+
         #region create director
         public async Task<Directors> CreateDirector(Directors directors)
         {
@@ -52,17 +66,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         }
         #endregion
 
-        #region Get director by lastname
-        public async Task<Directors> ByLastName(string lastName)
+        #region Movie by dirctor
+        public async Task<List<Directors>> MovieByDirector(string fname, string lname)
         {
-            return await context.ByLastName(lastName);
-        }
-        #endregion
-
-        #region Get director by first name
-        public async Task<Directors> ByFirstName(string name)
-        {
-            return await context.ByFirstName(name);
+            return await context.MovieByDirector(fname, lname);
         }
         #endregion
     }

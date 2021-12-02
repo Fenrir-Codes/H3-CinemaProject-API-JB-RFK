@@ -10,7 +10,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.DTO
         public int DirectorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+
     }
 }

@@ -49,6 +49,15 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         }
         #endregion
 
+        #region profile by name
+        public async Task<Profile> ProfileByName(string name)
+        {
+            return await context.Profile.FindAsync(name);
+            //return await context.Profile.Include(p => p.Bookings).FirstOrDefaultAsync();
+
+        }
+        #endregion
+
         #region create profile function
         //create profile data
         public async Task<Profile> CreateProfile(Profile data)

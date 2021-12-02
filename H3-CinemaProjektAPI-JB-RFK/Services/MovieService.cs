@@ -53,10 +53,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         }
         #endregion
 
-        #region Get movie by title
-        public async Task<Movie> GetMovieTitle(string title)
+        #region get by title
+        public async Task<List<Movie>> GetMovieTitle(string title)
         {
-            return await context.GetMovieTitle(title);
+            var temp = await context.GetMovieTitle(title);
+            return temp;
         }
         #endregion
     }
