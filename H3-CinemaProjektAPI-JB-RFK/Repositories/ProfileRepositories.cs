@@ -78,6 +78,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
                 findProfile.Firstname = data.Firstname;
                 findProfile.Lastname = data.Lastname;
                 findProfile.Address = data.Address;
+                findProfile.Password = data.Password;
                 findProfile.Email = data.Email;
                 findProfile.Phone = data.Phone;
 
