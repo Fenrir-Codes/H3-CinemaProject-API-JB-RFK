@@ -1,4 +1,5 @@
 ﻿using H3_CinemaProjektAPI_JB_RFK.DataBase;
+using H3_CinemaProjektAPI_JB_RFK.DTO;
 using H3_CinemaProjektAPI_JB_RFK.Interfaces;
 using H3_CinemaProjektAPI_JB_RFK.Model;
 using Microsoft.EntityFrameworkCore;
@@ -89,9 +90,11 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         #endregion
 
         #region Movie by director
-        public async Task<List<Directors>> MovieByDirector(string fname, string lname)
-        {   // Alle de metoder man kan kalde efter "Directors" er LinQ / LinQ er noget med at spørger ind til en datasamling
-            return await context.Directors.Include(m => m.Movies).Where(f => f.FirstName.Contains(fname) || f.LastName.Contains(lname)).ToListAsync();            
+        public async Task<List<Directors>> MovieByDirector(string name)
+        {  
+            
+            // Alle de metoder man kan kalde efter "Directors" er LinQ / LinQ er noget med at spørger ind til en datasamling            
+            return await context.Directors.Include(m => m.Movie).Where(f => f.FirstName.Contains(name) || f.LastName.Contains(name)).ToListAsync();            
         }
         #endregion
     }

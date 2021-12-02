@@ -18,6 +18,5 @@ namespace H3_CinemaProjektAPI_JB_RFK.DataBase
         public DbSet<PaymentDetails> PaymentDetails { get; set; }
         public DbSet<Profile> Profile { get; set; }
         public DbSet<SeatNumber> SeatNumber { get; set; }
-
     }
 }
