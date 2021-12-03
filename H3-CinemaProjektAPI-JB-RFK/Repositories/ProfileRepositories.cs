@@ -80,6 +80,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
                 findProfile.Email = data.Email;
                 findProfile.Password = data.Password;
                 findProfile.Phone = data.Phone;
+                findProfile.Role = data.Role;
 
                 context.Entry(findProfile).State = EntityState.Modified;
                 await context.SaveChangesAsync();
