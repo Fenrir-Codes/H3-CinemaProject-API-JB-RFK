@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using H3_CinemaProjektAPI_JB_RFK.DataBase;
 using H3_CinemaProjektAPI_JB_RFK.Model;
 using H3_CinemaProjektAPI_JB_RFK.Interfaces;
+using H3_CinemaProjektAPI_JB_RFK.DTO;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 {
@@ -143,7 +144,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 
         #region Movie by director
         [HttpGet("MovieByDirector/{name}")]
-        public async Task<ActionResult> MovieByDirector(string name)
+        public async Task<ActionResult<List<MovieByDirectorResponse>>> MovieByDirector(string name)
         {
 
          
@@ -171,7 +172,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 //    return Ok(await _context.MovieByDirector(fname, lname));
                 //}
 
-                return Ok(await _context.MovieByDirector(name));
+                return await _context.MovieByDirector(name);
             }
             catch (Exception ex)
             {

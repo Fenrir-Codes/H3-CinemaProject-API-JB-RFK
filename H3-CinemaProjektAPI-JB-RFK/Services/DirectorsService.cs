@@ -73,9 +73,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
             List<Directors> byDirectorResponses = await context.MovieByDirector(name);
             return byDirectorResponses.Select(obj => new MovieByDirectorResponse
             {
-                Movie = obj.Movie
+                Movie = obj.Movie,
 
-                //Title = obj.Movie.Title,
+
+                //Title = obj.Movie.Select(t => t.Title).ToString()
                 //Language = obj.Language,
                 //Country = obj.Country,
                 //Genre = obj.Genre,
