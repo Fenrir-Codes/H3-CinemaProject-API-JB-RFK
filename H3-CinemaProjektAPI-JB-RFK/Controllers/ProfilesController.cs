@@ -28,6 +28,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         [HttpPost("Login")]
         public async Task<ActionResult> Login(string Email, string Password)
         {
+           
             try
             {
                 var user = await _context.Login(Email, Password);

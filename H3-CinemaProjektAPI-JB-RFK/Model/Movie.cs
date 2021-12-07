@@ -15,12 +15,12 @@ namespace H3_CinemaProjektAPI_JB_RFK.Model
         public string Country { get; set; }
         public string Genre { get; set; }
         public string Image { get; set; }
-        public DateTime Duration { get; set; }
+        public string Duration { get; set; }
         public DateTime ReleaseDate { get; set; }
 
         /* EF Relations */
         public ICollection<Booking> Bookings { get; set; }
-        //public List<Directors> Directors { get; set; }
+        //public ICollection<Directors> Directors { get; set; }
 
     }
 }
