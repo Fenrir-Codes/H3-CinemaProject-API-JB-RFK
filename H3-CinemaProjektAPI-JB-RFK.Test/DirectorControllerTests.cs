@@ -35,6 +35,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Test
                    DirectorId = 1,
                    FirstName = "Anders",
                    LastName = "Matthesen",
+                   //Movie = List<Movie>
                 },
                 new DirectorsResponse
                 {
