@@ -28,6 +28,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Test
             sut = new MovieRepositories(context); // Denpendecy injection
         }
 
+        #region getAllMovies check if exits
         [Fact]
         public async Task getAll_listOfMovies_CheckIfDataExits()
         {
@@ -56,5 +57,23 @@ namespace H3_CinemaProjektAPI_JB_RFK.Test
             Assert.IsType<List<Movie>>(result);
 
         }
+        #endregion
+
+        #region getById If movie exits
+        [Fact]
+        public async Task getByID_IfMovieNotExits()
+        {
+            //Arrange
+            await context.Database.EnsureDeletedAsync(); // Sikre at dataen(cachen) fra tidligere er tom
+
+            //Act
+            int movieId = 1;
+            var result = await sut.GetMovie(movieId);
+
+            //Assert
+            Assert.NotNull(result);
+        }
+        #endregion
+
     }
 }
