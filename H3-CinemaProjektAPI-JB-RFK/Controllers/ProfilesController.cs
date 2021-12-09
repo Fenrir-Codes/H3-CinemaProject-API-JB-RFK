@@ -28,7 +28,6 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         [HttpPost("Login")]
         public async Task<ActionResult> Login(string Email, string Password)
         {
-           
             try
             {
                 var user = await _context.Login(Email, Password);
@@ -59,11 +58,21 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         #region get all profiles
         //getting all profiles to list
         [HttpGet]
-        public async Task<ActionResult<List<Profile>>> GetProfiles()
+        public async Task<ActionResult> GetProfiles()
         {
             try
             {
-                return await _context.GetProfiles();
+                List<Profile> profileList = await _context.GetProfiles();
+                if (profileList == null)
+                {
+                    return Problem("Empty");
+                }
+                if (profileList.Count == 0)
+                {
+                    return NoContent(); // 204
+                }
+                return Ok(profileList);
+
             }
             catch (Exception ex)
             {
