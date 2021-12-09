@@ -59,11 +59,21 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         #region get all profiles
         //getting all profiles to list
         [HttpGet]
-        public async Task<ActionResult<List<Profile>>> GetProfiles()
+        public async Task<ActionResult> GetProfiles()
         {
             try
             {
-                return await _context.GetProfiles();
+                List<Profile> profileList = await _context.GetProfiles();
+                if(profileList == null)
+                {
+                    return Problem("Nothing was returned");
+                }
+                if (profileList.Count == 0)
+                {
+                    return NoContent(); // 204
+                }
+                return Ok(profileList);
+                //return await _context.GetProfiles();
             }
             catch (Exception ex)
             {
