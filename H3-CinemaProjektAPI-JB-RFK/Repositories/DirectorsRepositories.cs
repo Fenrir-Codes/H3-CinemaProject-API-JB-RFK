@@ -63,6 +63,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Repositories
         #region get all directors
         public async Task<List<Directors>> GetAllDirectors()
         {
+            // Hent data fra context og returner fra metoden
             List<Directors> directorList = await context.Directors.ToListAsync();
             return directorList;
         }

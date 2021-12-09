@@ -11,14 +11,14 @@ using Xunit;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Test
 {
-    public class MovieRepositoriesTest
+    public class MovieRepositoriesTest  // Inheritance (hvor skal der arves fra)
     {
-        private readonly MovieRepositories sut;
+        private readonly MovieRepositories sut; // sut (System Under Test)
         private readonly DataBaseContext context;
         private readonly DbContextOptions<DataBaseContext> options;
 
         // Her simuleres databasen
-        public MovieRepositoriesTest()
+        public MovieRepositoriesTest() 
         {
             options = new DbContextOptionsBuilder<DataBaseContext>()
                 .UseInMemoryDatabase(databaseName: "Et DatabaseNavn")
@@ -52,9 +52,9 @@ namespace H3_CinemaProjektAPI_JB_RFK.Test
             var result = await sut.GetAllMovies();
 
             //Assert
-            Assert.NotNull(result);
-            Assert.Equal(2, result.Count);
-            Assert.IsType<List<Movie>>(result);
+            Assert.NotNull(result); // Kan også laves med Null(result); Så får man en fejl i testen og får new Author tilbage
+            Assert.Equal(2, result.Count);  // Hvor mange data indeholder min test, 2 er det forventede antal
+            Assert.IsType<List<Movie>>(result); // Tjekker typen af den forventede data
 
         }
         #endregion

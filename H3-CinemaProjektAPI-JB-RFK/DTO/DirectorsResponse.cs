@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace H3_CinemaProjektAPI_JB_RFK.DTO
 {
+    /// <summary>
+    /// (D)ata(T)ransfer(O)bject
+    /// </summary>
+
     public class DirectorsResponse
     {
         public int DirectorId { get; set; }

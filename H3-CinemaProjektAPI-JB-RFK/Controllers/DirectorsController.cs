@@ -12,7 +12,7 @@ using H3_CinemaProjektAPI_JB_RFK.DTO;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] // Definere min URL
     [ApiController]
     public class DirectorsController : ControllerBase
     {
@@ -24,7 +24,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
         }
 
         #region Get all directors
-        [HttpGet("GetAllDirectors")]
+        [HttpGet("GetAllDirectors")] // Der kan ikke være to metoder (HttpGet etc.) der hedder det samme
         public async Task<ActionResult> GetAllDirectors()
         {
             try
@@ -34,7 +34,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Controllers
                 {
                     return Problem("Nothing was returned");
                 }
-                if (directorList.Count == 0)
+                if (directorList.Count == 0) // Vi har været i db, men der er ikke oprettet nogle endnu
                 {
                     return NoContent(); // 204
                 }

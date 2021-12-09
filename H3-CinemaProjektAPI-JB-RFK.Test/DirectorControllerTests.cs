@@ -13,6 +13,10 @@ using Xunit;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Test
 {
+    //Arrange   -- Definere sine objekter, variable eller scope
+    //Act       -- Invoke method
+    //Assert    -- Kaldes diverse metoder til at verificerer om testen gik godt
+
     public class DirectorControllerTests
     {
         private readonly DirectorsController sut; //sut(System Under Test) kan hedde hvad som helst

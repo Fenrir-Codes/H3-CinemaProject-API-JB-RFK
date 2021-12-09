@@ -5,6 +5,17 @@ using System.Threading.Tasks;
 
 namespace H3_CinemaProjektAPI_JB_RFK.Model
 {
+    /// <summary>
+    /// 1) Model
+    /// 2) Databasecontext
+    /// 2,2) Interfaces for IbookServie, IBookRepositories
+    /// 2,3) DTO - BookResponse
+    /// 3) Controller (kan evt. autogenereres
+    /// 4) bookService
+    /// 5) BookRepositories
+    /// 6) Test - BookControllerTest
+    /// </summary>
+    /// 
     public class Directors
     {
         public int DirectorsId { get; set; }

@@ -11,6 +11,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.DataBase
     {
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options) { }
 
+        // Min property Directors svarer til en tabel
+        // Når jeg skriver context.Directors, så tager jeg fat i linjen nedenunder, som
+        // er en tabel i databasen, pga EntityFramework
+
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Directors> Directors { get; set; }
         public DbSet<Hall> Hall { get; set; }

@@ -10,8 +10,10 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
 {
     public class DirectorsService : IDirectorsService
     {
+        // IDirectorsRepositories svarer til en int/string
         private readonly IDirectorsRepositories context;
 
+        // Dette er en Contructor
         public DirectorsService(IDirectorsRepositories _context)
         {
             context = _context;
@@ -54,7 +56,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Services
         #endregion
 
         #region get all directors
-        public async Task<List<Directors>> GetAllDirectors()
+        public async Task<List<Directors>> GetAllDirectors() // List<Directors> er en Type
         {
             return await context.GetAllDirectors();
         }

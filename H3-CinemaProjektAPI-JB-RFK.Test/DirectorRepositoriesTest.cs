@@ -26,7 +26,7 @@ namespace H3_CinemaProjektAPI_JB_RFK.Test
                 .Options;
             //Association - Det der skal testes på
             context = new DataBaseContext(options);
-            sut = new DirectorsRepositories(context);
+            sut = new DirectorsRepositories(context); // Dependency injection
         }
 
         [Fact]
@@ -54,8 +54,8 @@ namespace H3_CinemaProjektAPI_JB_RFK.Test
 
             //Assert
             Assert.NotNull(result); // Kan også laves med Null(result); Så får man en fejl i testen og får new Directors tilbage
-            Assert.Equal(2, result.Count);
-            Assert.IsType<List<Directors>>(result);
+            Assert.Equal(2, result.Count); // Hvor mange data indeholder min test, 2 er det forventede antal
+            Assert.IsType<List<Directors>>(result); // Tjekker typen af den forventede data
         }
 
 
